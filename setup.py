@@ -4,7 +4,7 @@ import mkdg
 
 
 setup(name=mkdg.__name__,
-      description='Misspelled Korean Data Generator',
+      description=mkdg.__description__,
       version=mkdg.__version__,
       author=['Kyeongnam Kim' 'Subin Jin'],
       author_email=['kkyy0126@naver.com', 'subinjin22@gmail.com'],
