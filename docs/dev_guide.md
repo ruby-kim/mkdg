@@ -52,3 +52,16 @@ last update: 2020-04-16 ::
 
 ## 7. Issue 규칙
 ## 8. Wiki 규칙
+## 9. 실행방법
+* setting
+```bash
+git clone https://github.com/study-artificial-intelligence/mkdg.git
+cd mkdg
+python setup.py install
+```
+이후에 실행이 안될 시 python path에 해당 경로 추가
+* running
+  ```bash
+  python main.py --filename [filename1] [filename2]
+  ```
+  * filename: 원하는 파일 이름. 개수 제한은 없지만, 1개 이상은 입력 필수
