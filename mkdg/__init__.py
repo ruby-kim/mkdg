@@ -1,7 +1,6 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
 __name__ = 'mkdg'
 __description__ = 'Misspelled Korean Data Generator'
 __version__ = '0.0.0'
