@@ -1,6 +1,6 @@
 # Development Guide
 채워지지 않은 부분은 의논이 필요함<br>
-last update: 2020-04-16
+last update: 2020-04-16 ::
 <br>
 
 ## 1. Commit 메시지
