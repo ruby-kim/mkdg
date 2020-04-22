@@ -4,7 +4,7 @@ analyze top word frequency
 import re
 from konlpy.tag import Komoran
 
-from mkdg.loader.loadfile import read_text_file
+from mkdg.utils.loadfile import read_text_file
 from mkdg.utils.preprocess import del_special_char
 
 
