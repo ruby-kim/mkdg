@@ -17,4 +17,3 @@ if __name__ == '__main__':
     path = "./data/" + filename
     raw_text = read_text_file(path)
     prep_text = del_special_char(raw_text)
-

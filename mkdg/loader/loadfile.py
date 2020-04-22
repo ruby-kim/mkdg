@@ -13,6 +13,7 @@ def read_csv_file(filename):
 def read_text_file(filename):
     with open(filename, 'r', encoding="utf-8") as f:
         text = f.readlines()
+
     return text
 
 

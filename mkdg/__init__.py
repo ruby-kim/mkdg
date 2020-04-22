@@ -7,7 +7,7 @@ __version__ = '0.0.0'
 __url__ = 'https://github.com/study-artificial-intelligence/mkdg'
 __download_url__ = 'https://github.com/study-artificial-intelligence/mkdg'
 __install_requires__ = [
-    # input required install
+    "konlpy",   # komoran
 ]
 __license__ = 'MIT'
 
@@ -16,3 +16,4 @@ from mkdg.option import *
 from mkdg.loader import *
 from mkdg.misspell import *
 from mkdg.writer import *
+from mkdg.utils import *
