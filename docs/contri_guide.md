@@ -1,6 +1,6 @@
 # Contributor Guide
-채워지지 않은 부분은 의논이 필요함<br>
-last update: 2020-04-16 ::
+임의로 작성. 의논이 필요함<br>
+last update: 2020-04-22
 <br>
 
 ## 1. Commit 메시지
@@ -23,21 +23,7 @@ last update: 2020-04-16 ::
   2. ```어떻게```보다 ```무엇을```, ```왜```에 맞춰 작성
   3. 각 내용마다 번호 붙여 작성
   4. 될 수 있으면 def 기준으로 작성
-* 예시
-  1. mkdg/__init__.py에 내용 추가: 
-     ```bash
-     [Add] mkdg/__init__.py
-     package import 문법 작성
-     ```
-  2. mkdg/option.py 파일 생성:
-     ```bash
-     [New] mkdg/option.py
-     1. setting_parse: 파일이름 입력 옵션 선택 및 파싱
-     ```
-  3. setup.py 파일 삭제:
-     ```bash
-     [Remove] setup.py
-     ```
+
 <br>
 
 ## 2. Branch 이름
@@ -62,6 +48,6 @@ python setup.py install
 이후에 실행이 안될 시 python path에 해당 경로 추가
 * running
   ```bash
-  python main.py --filename [filename1] [filename2]
+  python misspell.py --filename [filename1] [filename2]
   ```
   * filename: 원하는 파일 이름. 개수 제한은 없지만, 1개 이상은 입력 필수
