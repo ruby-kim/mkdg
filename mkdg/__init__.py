@@ -13,7 +13,5 @@ __license__ = 'MIT'
 
 
 from mkdg.option import *
-from mkdg.loader import *
 from mkdg.misspell import *
-from mkdg.writer import *
 from mkdg.utils import *
