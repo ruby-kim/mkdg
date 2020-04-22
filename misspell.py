@@ -5,8 +5,7 @@
 Implement making misspelled korean data operator
 """
 
-from mkdg.option import setting_parse
-from mkdg.loader.loadfile import read_text_file
+from mkdg.utils.loadfile import read_text_file
 from mkdg.utils.preprocess import del_special_char
 
 
