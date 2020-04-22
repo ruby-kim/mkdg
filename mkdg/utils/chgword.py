@@ -17,11 +17,12 @@ def chg_word(content, dict, alt=None):
     for i in range(len(content)):
         random.seed()
         if alt is not None:
-            for key, value in alt.items():
+            for key, value in alt.items():  # 똑같은 취급을 해주고 싶은 단어들을 통합
                 content[i] = re.sub(key, value, content[i])
-        for key, value in dict.items():
+        for key, value in dict.items():     # 각 [예시 문장] 에서 [원래 형태] 위치들을 저장
             check = [m.start() for m in re.finditer(key, content[i])]
 
+            # 문장 내에 [원래 형태]가 존재 시, [바꾸고 싶은 형태]로 랜덤 뽑기 및 변환
             if len(check) is not 0:
                 randChg = value[random.randint(0, len(value)-1)]
                 content[i] = content[i].replace(key, randChg)
