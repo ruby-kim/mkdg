@@ -13,7 +13,7 @@ last update: 2020-04-22
 * 본문 작성 시 아래를 참고해서 작성
   1. ```영어```, ```한국어``` 중 선택해서 작성
   2. ```어떻게```보다 ```무엇을```, ```왜```에 맞춰 작성
-  3. 각 내용마다 구분이 가도록 작성(order / unorder)
+  3. 각 내용마다 구분이 가도록 작성(order & unorder 사용)
 
 <br>
 
@@ -23,7 +23,7 @@ last update: 2020-04-22
 ## 5. 버전 표기 기준
 ## 6. Merge 규칙
 * 각자 맡은 코드를 작성 및 수정 후,<br>
-팀원은 Pull request에 있는 해당 Is:qsue를 보고 피드백 남기기<br>
+팀원은 Pull request에 있는 해당 Issue를 보고 피드백 남기기<br>
 (merge 찬성 혹은 개선 내용 추가)
 <br>
 
@@ -38,7 +38,7 @@ python setup.py install
 ```
 이후에 실행이 안될 시 python path에 해당 경로 추가
 * running
-  ```bash
-  python misspell.py --filename [filename1] [filename2]
-  ```
-  * filename: 원하는 파일 이름. 개수 제한은 없지만, 1개 이상은 입력 필수
+```bash
+python misspell.py --filename [filename1] [filename2]
+```
+   * filename: 원하는 파일 이름. 개수 제한은 없지만, 1개 이상은 입력 필수
