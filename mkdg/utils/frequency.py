@@ -62,12 +62,12 @@ class Tag_dict:
 
     def print_frequency(self, cnt=30):
         """
-            print dict values frequency (descending)
+        print dict values frequency (descending)
 
-            Args:
-                :param: cnt(int)
-            Returns:
-                :param: tagDict(1st ~ until cnt-th) (dict)
+        Args:
+            :param: cnt(int)
+        Returns:
+            :param: tagDict(1st ~ until cnt-th) (dict)
         """
         self.adjective_dict = sorted(self.adjective_dict.items(), key=lambda x: x[1], reverse=True)
         self.adverb_dict = sorted(self.adverb_dict.items(), key=lambda x: x[1], reverse=True)
@@ -80,25 +80,25 @@ class Tag_dict:
         self.suffix_dict = sorted(self.suffix_dict.items(), key=lambda x: x[1], reverse=True)
         self.verb_dict = sorted(self.verb_dict.items(), key=lambda x: x[1], reverse=True)
 
-        print("형용사:")
+        print("형용사(adjective):")
         print(self.adjective_dict[:cnt])
-        print("\n부사:")
+        print("\n부사(adverb):")
         print(self.adverb_dict[:cnt])
-        print("\n접속사:")
+        print("\n접속사(conjunction):")
         print(self.conjunction_dict[:cnt])
-        print("\n관형사:")
+        print("\n관형사(determiner):")
         print(self.determiner_dict[:cnt])
-        print("\n어미:")
+        print("\n어미(eomi):")
         print(self.eomi_dict[:cnt])
-        print("\n조사:")
+        print("\n조사(josa):")
         print(self.josa_dict[:cnt])
-        print("\n명사:")
+        print("\n명사(noun):")
         print(self.noun_dict[:cnt])
-        print("\n선어말어미:")
+        print("\n선어말어미(preEomi):")
         print(self.preEomi_dict[:cnt])
-        print("\n접사:")
+        print("\n접사(suffix):")
         print(self.suffix_dict[:cnt])
-        print("\n동사:")
+        print("\n동사(verb):")
         print(self.verb_dict[:cnt])
 
     def judge_tag(self):
