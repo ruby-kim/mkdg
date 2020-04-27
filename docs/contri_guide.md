@@ -41,4 +41,4 @@ python setup.py install
 ```bash
 python misspell.py --filename [filename1] [filename2]
 ```
-   * filename: 원하는 파일 이름. 개수 제한은 없지만, 1개 이상은 입력 필수
+filename: 원하는 파일 이름. 개수 제한은 없지만, 1개 이상은 입력 필수
