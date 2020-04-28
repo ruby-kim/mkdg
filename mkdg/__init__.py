@@ -4,8 +4,8 @@
 __name__ = 'mkdg'
 __description__ = 'Misspelled Korean Data Generator'
 __version__ = '0.0.0'
-__url__ = 'https://github.com/study-artificial-intelligence/mkdg'
-__download_url__ = 'https://github.com/study-artificial-intelligence/mkdg'
+__url__ = 'https://github.com/study-ai-data/mkdg'
+__download_url__ = 'https://github.com/study-ai-data/mkdg'
 __install_requires__ = [
     "konlpy",   # komoran
 ]
