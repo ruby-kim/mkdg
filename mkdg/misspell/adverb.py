@@ -4,50 +4,54 @@
 from mkdg.utils.chgword import chg_word
 
 
-adverb = {
-    "좀": [
-        "좀",
-        "쫌",
-    ],
-    "더": [
-        "떠",
-    ],
-    "많이": [
-        "만이",
-    ],
-    "안": [
-        "안",
-        "앙",
-    ],
-    "따로": [
-        "따로",
-        "따루",
-    ],
-    "다": [
-        "다",
-        "따", "타",
-    ],
-    "잘": [
-        "잘",
-        "자알",
-    ],
-    "지금": [
-        "지금",
-        "직금", "작금",
-    ],
-    "혹시": [
-        "혹시",
-        "호옥시",
-    ],
-    "얼마나": [
-        "얼마나",
-        "얼만아",
-    ]
-}
+def load_adverb():
+    adverb = {
+        "좀": [
+            "좀",
+            "쫌",
+        ],
+        "더": [
+            "떠",
+        ],
+        "많이": [
+            "만이",
+        ],
+        "안": [
+            "안",
+            "앙",
+        ],
+        "따로": [
+            "따로",
+            "따루",
+        ],
+        "다": [
+            "다",
+            "따", "타",
+        ],
+        "잘": [
+            "잘",
+            "자알",
+        ],
+        "지금": [
+            "지금",
+            "직금", "작금",
+        ],
+        "혹시": [
+            "혹시",
+            "호옥시",
+        ],
+        "얼마나": [
+            "얼마나",
+            "얼만아",
+        ]
+    }
 
-alternative = {
+    alternative = {
 
-}
+    }
+
+    return adverb, alternative
+
 
 if __name__ == "__main__":
     test = [
@@ -57,6 +61,6 @@ if __name__ == "__main__":
     ]
 
     print("Origin: ", test)
-
-    result = chg_word(test, adverb)  # , alternative)
+    adverb, alt = load_adverb()
+    result = chg_word(test, adverb)  # , alt)
     print("Result: ", result)

@@ -4,49 +4,52 @@
 from mkdg.utils.chgword import chg_word
 
 
-determiner = {
-    "네": [
-        "네",
-        "넴", "넹", "넷", "넵",
-    ],
-    "몇": [
-        "몇",
-        "몃",
-    ],
-    "한": [
-        "한",
-        "함",
-    ],
-    "어떤": [
-        "어떤",
-        "어딴", "어뜬",
-    ],
-    "두": [
-        "두",
-        "둘",
-    ],
-    "이": [
-        "이",
-    ],
-    "그": [
-        "그",
-    ],
-    "다른": [
-        "다른",
-        "",
-    ],
-    "이런": [
-        "이런",
-        "이론", "이른", "오런", "요런",
-    ],
-    "세": [
-        "세",
-    ]
-}
+def load_determiner():
+    determiner = {
+        "네": [
+            "네",
+            "넴", "넹", "넷", "넵",
+        ],
+        "몇": [
+            "몇",
+            "몃",
+        ],
+        "한": [
+            "한",
+            "함",
+        ],
+        "어떤": [
+            "어떤",
+            "어딴", "어뜬",
+        ],
+        "두": [
+            "두",
+            "둘",
+        ],
+        "이": [
+            "이",
+        ],
+        "그": [
+            "그",
+        ],
+        "다른": [
+            "다른",
+            "",
+        ],
+        "이런": [
+            "이런",
+            "이론", "이른", "오런", "요런",
+        ],
+        "세": [
+            "세",
+        ]
+    }
 
-alternative = {
+    alternative = {
 
-}
+    }
+
+    return determiner, alternative
 
 
 if __name__ == "__main__":
@@ -57,6 +60,7 @@ if __name__ == "__main__":
     ]
 
     print("Origin: ", test)
+    determiner, alternative = load_determiner()
     result = chg_word(test, determiner)  # , alternative)
     print("Result: ", result)
 

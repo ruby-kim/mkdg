@@ -5,45 +5,48 @@
 from mkdg.utils.chgword import chg_word
 
 
-verb = {
-    "되": [
-        "되",
-        "돼",
-    ],
-    "하": [
-        "하",
-    ],
-    "있": [
-        "있",
-        "잇",
-    ],
-    "먹": [
-        "먹",
-    ],
-    "드리": [
-        "드리",
-    ],
-    "들어가": [
-        "들어가",
-        "드러가",
-    ],
-    "나오": [
-        "나오",
-    ],
-    "들": [
-        "들",
-    ],
-    "나가": [
-        "나가",
-    ],
-    "걸리": [
-        "걸리",
-    ]
-}
+def load_verb():
+    verb = {
+        "되": [
+            "되",
+            "돼",
+        ],
+        "하": [
+            "하",
+        ],
+        "있": [
+            "있",
+            "잇",
+        ],
+        "먹": [
+            "먹",
+        ],
+        "드리": [
+            "드리",
+        ],
+        "들어가": [
+            "들어가",
+            "드러가",
+        ],
+        "나오": [
+            "나오",
+        ],
+        "들": [
+            "들",
+        ],
+        "나가": [
+            "나가",
+        ],
+        "걸리": [
+            "걸리",
+        ]
+    }
 
-alternative = {
-    "습니다": "니다"
-}
+    alternative = {
+        "습니다": "니다"
+    }
+
+    return verb, alternative
 
 
 if __name__ == "__main__":
@@ -53,5 +56,6 @@ if __name__ == "__main__":
         "병원 관계자들 또한 좋아할 것입니다."
     ]
     print("Origin: ", test)
-    result = chg_word(test, verb, alternative)
+    verb, alt = load_verb()
+    result = chg_word(test, verb, alt)
     print("Result: ", result)

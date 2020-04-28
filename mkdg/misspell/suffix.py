@@ -4,43 +4,51 @@
 from mkdg.utils.chgword import chg_word
 
 
-suffix = {
-    "비": [
-        "비",
-        "삐",
-    ],
-    "제": [
-        "제",
-        "쩨",
-    ],
-    "불": [
-        "불",
-    ],
-    "무": [
-        "무",
-        "무우",
-    ],
-    "생": [
-        "생",
-        "쌩",
-    ],
-    "초": [
-        "초",
-    ],
-    "소": [
-        "소",
-    ],
-    "반": [
-        "반",
-    ],
-    "대": [
-        "대",
-    ],
-    "신": [
-        "신",
-        "씬",
-    ]
-}
+def load_suffix():
+    suffix = {
+        "비": [
+            "비",
+            "삐",
+        ],
+        "제": [
+            "제",
+            "쩨",
+        ],
+        "불": [
+            "불",
+        ],
+        "무": [
+            "무",
+            "무우",
+        ],
+        "생": [
+            "생",
+            "쌩",
+        ],
+        "초": [
+            "초",
+        ],
+        "소": [
+            "소",
+        ],
+        "반": [
+            "반",
+        ],
+        "대": [
+            "대",
+        ],
+        "신": [
+            "신",
+            "씬",
+        ]
+    }
+
+    alternative = {
+
+    }
+
+    return suffix, alternative
+
 
 if __name__ == "__main__":
     test = [
@@ -50,5 +58,6 @@ if __name__ == "__main__":
     ]
 
     print("Origin: ", test)
-    result = chg_word(test, josa)  # , alternative)
+    suffix, alt = load_suffix()
+    result = chg_word(test, suffix)  # , alt)
     print("Result: ", result)

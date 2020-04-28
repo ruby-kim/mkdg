@@ -2,30 +2,34 @@
 from mkdg.utils.chgword import chg_word
 
 
-preEomi = {
-    "시": [
-        "시"
-    ],
-    "겠": [
-        "겠",
-        "겟",
-    ],
-    "으시": [
-        "으시",
-        "으씨",
-    ],
-    "었": [
-        "었",
-        "엇",
-    ],
-    "았": [
-        "았",
-        "앗",
-    ],
-}
+def load_preEomi():
+    preEomi = {
+        "시": [
+            "시"
+        ],
+        "겠": [
+            "겠",
+            "겟",
+        ],
+        "으시": [
+            "으시",
+            "으씨",
+        ],
+        "었": [
+            "었",
+            "엇",
+        ],
+        "았": [
+            "았",
+            "앗",
+        ],
+    }
 
-alternative = {
-}
+    alternative = {
+    }
+
+    return preEomi, alternative
+
 
 if __name__ == "__main__":
     test = [
@@ -35,5 +39,6 @@ if __name__ == "__main__":
     ]
 
     print("Origin: ", test)
-    result = chg_word(test, preEomi)  # , alternative)
+    preEomi, alt = load_preEomi()
+    result = chg_word(test, preEomi)  # , alt)
     print("Result: ", result)

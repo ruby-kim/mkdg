@@ -4,52 +4,56 @@
 from mkdg.utils.chgword import chg_word
 
 
-adjective = {
-    "없": [
-        "없",
-        "업"
-    ],
-    "어떻": [
-        "어떻",
-        "어떡",
-    ],
-    "맵": [
-        "맵",
-    ],
-    "같": [
-        "같",
-        "갓", "갇",
-    ],
-    "맛있": [
-        "맛있",
-        "맛잇", "맜있", "맜잇",
-    ],
-    "괜찮": [
-        "괜찮",
-        "괜찬", "괞찮",
-    ],
-    "그렇": [
-        "그렇",
-        "그렿", "그럿",
-    ],
-    "다르": [
-        "다르",
-        "다른",
-    ],
-    "많": [
-        "많",
-        "만", "맣",
-    ],
-    "크": [
-        "크",
-        "큰",
-    ],
+def load_adjective():
+    adjective = {
+        "없": [
+            "없",
+            "업"
+        ],
+        "어떻": [
+            "어떻",
+            "어떡",
+        ],
+        "맵": [
+            "맵",
+        ],
+        "같": [
+            "같",
+            "갓", "갇",
+        ],
+        "맛있": [
+            "맛있",
+            "맛잇", "맜있", "맜잇",
+        ],
+        "괜찮": [
+            "괜찮",
+            "괜찬", "괞찮",
+        ],
+        "그렇": [
+            "그렇",
+            "그렿", "그럿",
+        ],
+        "다르": [
+            "다르",
+            "다른",
+        ],
+        "많": [
+            "많",
+            "만", "맣",
+        ],
+        "크": [
+            "크",
+            "큰",
+        ],
 
-}
+    }
 
-alternative = {
+    alternative = {
 
-}
+    }
+
+    return adjective, alternative
+
 
 if __name__ == "__main__":
     test = [
@@ -59,5 +63,6 @@ if __name__ == "__main__":
     ]
 
     print("Origin: ", test)
-    result = chg_word(test, adjective)  # , alternative)
+    adjective, alt = load_adjective()
+    result = chg_word(test, adjective)  # , alt)
     print("Result: ", result)

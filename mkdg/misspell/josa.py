@@ -11,23 +11,32 @@
 from mkdg.utils.chgword import chg_word
 
 
-josa = {
-    "나": [
-       "나",
-    ],
-    "이나": [
-        "이나",
-    ],
-    "와": [
-        "와",
-    ],
-    "과": [
-        "과",
-    ],
-    "이랑": [
-        "이랑",
-    ]
-}
+def load_josa():
+    josa = {
+        "나": [
+           "나",
+        ],
+        "이나": [
+            "이나",
+        ],
+        "와": [
+            "와",
+        ],
+        "과": [
+            "과",
+        ],
+        "이랑": [
+            "이랑",
+            "야랑",
+        ]
+    }
+
+    alternative = {
+
+    }
+
+    return josa, alternative
+
 
 if __name__ == "__main__":
     test = [
@@ -37,5 +46,6 @@ if __name__ == "__main__":
     ]
 
     print("Origin: ", test)
-    result = chg_word(test, josa)  # , alternative)
+    josa, alt = load_josa()
+    result = chg_word(test, josa)  # , alt)
     print("Result: ", result)
