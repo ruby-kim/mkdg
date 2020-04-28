@@ -20,7 +20,7 @@ python 파일 실행은 최상위에서(git clone 후 cd하면 바로 나오는 
 <br><br>
 
 ## 4. ```mkdg/misspell/```
-* 명사, 동사, 부사 등 목록 리스트를 작성
+* 형용사(adjective), 부사(adverb), 접속사(conjunction), 관형사(determiner), 어미(eomi), 조사(josa), 명사(noun), 선어말어미(preEomi), 접사(suffix), 동사(verb) 목록 제작
 * 기본 작성법
   ```python 
   # mkdg/misspell/____.py
