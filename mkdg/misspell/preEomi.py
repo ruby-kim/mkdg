@@ -15,8 +15,9 @@ def load_preEomi():
             "으시",
             "으씨",
         ],
-        "었": [
-            "었",
+        "있었": [
+            "있었", "었",
+            "있엇", "잇었", "잇엇",
             "엇",
         ],
         "았": [
@@ -26,6 +27,7 @@ def load_preEomi():
     }
 
     alternative = {
+        "었": "있었",
     }
 
     return preEomi, alternative
