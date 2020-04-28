@@ -24,3 +24,8 @@ python setup.py install
    ```bash
    python misspell.py
    ```
+<br>
+
+## Note
+자료의 부족으로 아직은 직접 데이터를 분석해서 데이터를 생성해야 합니다.<br>
+데이터 분석은 [docs/dev_guide](https://github.com/study-ai-data/mkdg)를 참고해주세요.
