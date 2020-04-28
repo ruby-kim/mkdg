@@ -134,6 +134,38 @@ class Tag_dict:
                     elif tagName == "verb":
                         self.verb_dict = tag_cnt(word, self.verb_dict)
 
+    def print_dict(self, tagName):
+        if tagName == "adjective":
+            for tag in self.adjective_dict.keys():
+                print(tag)
+        elif tagName == "adverb":
+            for tag in self.adverb_dict.keys():
+                print(tag)
+        elif tagName == "conjunction":
+            for tag in self.conjunction_dict.keys():
+                print(tag)
+        elif tagName == "determiner":
+            for tag in self.determiner_dict.keys():
+                print(tag)
+        elif tagName == "eomi":
+            for tag in self.eomi_dict.keys():
+                print(tag)
+        elif tagName == "josa":
+            for tag in self.josa_dict.keys():
+                print(tag)
+        elif tagName == "noun":
+            for tag in self.noun_dict.keys():
+                print(tag)
+        elif tagName == "preEomi":
+            for tag in self.preEomi_dict.keys():
+                print(tag)
+        elif tagName == "suffix":
+            for tag in self.suffix_dict.keys():
+                print(tag)
+        elif tagName == "verb":
+            for tag in self.verb_dict.keys():
+                print(tag)
+
 
 def frequency(contents):
     """
@@ -147,6 +179,7 @@ def frequency(contents):
     dict = Tag_dict(contents)
     dict.judge_tag()
     dict.print_frequency()
+    # dict.print_dict("noun")
 
 
 if __name__ == "__main__":
