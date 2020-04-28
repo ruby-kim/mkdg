@@ -166,6 +166,11 @@ class Tag_dict:
             for tag in self.verb_dict.keys():
                 print(tag)
 
+    def print_morph(self):
+        for text in self.content:
+            result = self.komoran.morphs(text)
+            print(result)
+
 
 def frequency(contents):
     """
@@ -178,12 +183,13 @@ def frequency(contents):
     """
     dict = Tag_dict(contents)
     dict.judge_tag()
-    dict.print_frequency()
+    # dict.print_morph()
+    dict.print_frequency()  #부사부터 정리하고 막..하기...ㅠㅠ..
     # dict.print_dict("noun")
 
 
 if __name__ == "__main__":
-    filename = "A 음식점(15,726)_only_speak.txt"
+    filename = "C 학원(4,773)_only_speak.txt"
     path = "./data/" + filename
     raw_text = read_text_file(path)
     frequency(raw_text)
