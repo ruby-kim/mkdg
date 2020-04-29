@@ -21,28 +21,12 @@ python 파일 실행은 최상위에서(git clone 후 cd하면 바로 나오는 
 
 ## 4. ```mkdg/misspell/```
 * 형용사(adjective), 부사(adverb), 접속사(conjunction), 관형사(determiner), 어미(eomi), 조사(josa), 명사(noun), 선어말어미(preEomi), 접사(suffix), 동사(verb) 목록 제작
-* 기본 작성법
-  ```python 
-  # mkdg/misspell/____.py
-  import random
-  import re
-
-
-  misspellList = {
-            "원래 형태": [
-                          "원래 형태",   # 극소수의 확률로 추출
-                          "바꾸고 싶은 형태1", "바꾸고 싶은 형태2", "바꾸고 싶은 형태3", ...
-            ],
-            "원래 형태2: [
-            ],
-            ...
-  }
-    
-  alternative = {
-            "타겟 단어": "같은 취급을 해주고 싶은 단어"
-            # "습니다": "니다"       # mkdg/misspell/verb.py 참고
-  }
-  ```
+* 각 태그별 csv 파일 내용을 추출함 (```data/___.csv```)
+* 기본 작성법: 각 태그의 csv 파일을 연 후, 아래와 같이 수정해주세요.<br>
+  |origin|change 1|change 2| ... |
+  |:--:|:--:|:--:|:--:|
+  |원래 단어1|변경할 형태1|변경할 형태 2|...|
+  |원래 단어2|변경할 형태1|변경할 형태 2|...|
 <br><br>
 
 ## 5. ```mkdg/utils/```
@@ -52,25 +36,25 @@ python 파일 실행은 최상위에서(git clone 후 cd하면 바로 나오는 
 <br><br>
 
 ### 2) frequency.py
-* 원본.txt에서 사용된 단어의 빈도수를 tag별로 내림차순으로 출력(기본값: 30개)
+* ```data/원본.txt```에서 사용된 단어의 빈도수를 tag별로 내림차순으로 출력(기본값: 30개)
 * tag: 형용사, 부사, 접속사, 관형사, 어미, 조사, 명사, 선어말어미, 접사, 동사
 <br><br>
 
 ### 3) getmisspell.py
-* 원본.txt에서 추출된 tag별 값을 불러온 후 저장
+* ```data/___.csv```에서 추출된 tag별 값들을 모두 불러온 후 저장
 * tag: 형용사, 부사, 접속사, 관형사, 어미, 조사, 명사, 선어말어미, 접사, 동사
 <br><br>
 
 ### 4) loadfile.py
-* 원본.txt의 내용을 추출함
-* 현재까지 .txt에 대한 처리만 진행
+* ```원본.txt```와 ```___.csv```의 내용을 추출함
+* 원본은 ```.txt```, 태그는 ```.csv``` 확장명 사용
 <br><br>
 
 ### 5) preprocess.py
-* 원본.txt에서 komoran 사용 후 전처리 시키는 코드
+* ```data/원본.txt```에서 komoran 사용 후 전처리 시키는 코드
 <br><br>
 
 ### 6) writefile.py
-* 결과.txt의 내용을 저장함
-* 현재까지 .txt에 대한 처리만 진행
+* ```결과.txt```의 내용을 저장함 (최종: ```data/tgt/결과.txt```)
+* 현재 .txt에 대한 처리만 진행
 <br><br>
