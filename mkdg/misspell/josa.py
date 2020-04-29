@@ -9,32 +9,20 @@
     * 호격: 아, 야
 """
 from mkdg.utils.chgword import chg_word
+from mkdg.utils.getmisspell import misspell_single_data
 
 
 def load_josa():
-    josa = {
-        "나": [
-           "나",
-        ],
-        "이나": [
-            "이나",
-        ],
-        "와": [
-            "와",
-        ],
-        "과": [
-            "과",
-        ],
-        "이랑": [
-            "이랑",
-            "야랑",
-        ]
-    }
+    """
+    Load josa data
 
+    Returns: josa dictionary, alternative list
+    """
+    filename = "data/josa.csv"
+    josa = misspell_single_data(filename)
     alternative = {
 
     }
-
     return josa, alternative
 
 

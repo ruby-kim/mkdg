@@ -2,54 +2,20 @@
 어미
 """
 from mkdg.utils.chgword import chg_word
+from mkdg.utils.getmisspell import misspell_single_data
 
 
 def load_eomi():
-    eomi = {
-        "어요": [
-            "어요",
-            "엇요", "어용", "어욘",
-        ],
-        "고": [
-            "고",
-            "구",
-        ],
-        "면": [
-            "면",
-            "명",
-        ],
-        "아요": [
-            "아요",
-            "야요",
-        ],
-        "니다": [
-            "니다", "습니다",
-            "습다", "슴다", "슷니다", "숩다", "스비다",
-            "숩니다", "슷니다", "습닛다",
-            "니당", "닌다", "니단", "니담", "님당",
-            "닛당", "님다", "닛다", "니닷",
-        ],
-        "어": [
-            "어",
-            "엇",
-        ],
-        "게": [
-            "게",
-        ],
-        "에요": [
-            "에요",
-            "예요",
-        ],
-        "게요": [
-            "게요",
-        ],
+    """
+    Load eomi data
 
-    }
-
+    Returns: eomi dictionary, alternative list
+    """
+    filename = "data/eomi.csv"
+    eomi = misspell_single_data(filename)
     alternative = {
         "습니다": "니다",
     }
-
     return eomi, alternative
 
 
@@ -62,5 +28,5 @@ if __name__ == "__main__":
 
     print("Origin: ", test)
     eomi, alt = load_eomi()
-    result = chg_word(test, eomi)  # , alt)
+    result = chg_word(test, eomi, alt)
     print("Result: ", result)

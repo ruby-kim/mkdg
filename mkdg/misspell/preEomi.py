@@ -1,35 +1,19 @@
 """선어말어미"""
 from mkdg.utils.chgword import chg_word
+from mkdg.utils.getmisspell import misspell_single_data
 
 
 def load_preEomi():
-    preEomi = {
-        "시": [
-            "시"
-        ],
-        "겠": [
-            "겠",
-            "겟",
-        ],
-        "으시": [
-            "으시",
-            "으씨",
-        ],
-        "있었": [
-            "있었", "었",
-            "있엇", "잇었", "잇엇",
-            "엇",
-        ],
-        "았": [
-            "았",
-            "앗",
-        ],
-    }
+    """
+    Load preEomi data
 
+    Returns: preEomi dictionary, alternative list
+    """
+    filename = "data/preEomi.csv"
+    preEomi = misspell_single_data(filename)
     alternative = {
         "었": "있었",
     }
-
     return preEomi, alternative
 
 

@@ -1,57 +1,21 @@
 """
-접사\
+접사
 """
 from mkdg.utils.chgword import chg_word
+from mkdg.utils.getmisspell import misspell_single_data
 
 
 def load_suffix():
-    suffix = {
-        "비": [
-            "비",
-            "삐",
-        ],
-        "제": [
-            "제",
-            "쩨",
-        ],
-        "불": [
-            "불",
-        ],
-        "무": [
-            "무",
-            "무우",
-        ],
-        "생": [
-            "생",
-        ],
-        "초": [
-            "초",
-        ],
-        "소": [
-            "소",
-        ],
-        "반": [
-            "반",
-        ],
-        "대": [
-            "대",
-        ],
-        "신": [
-            "신",
-        ],
-        "탈": [
-            "탈",
-        ],
-        "고": [
-            "고",
-            "코",
-        ]
-    }
+    """
+    Load suffix data
 
+    Returns: suffix dictionary, alternative list
+    """
+    filename = "data/suffixe.csv"
+    suffix = misspell_single_data(filename)
     alternative = {
 
     }
-
     return suffix, alternative
 
 

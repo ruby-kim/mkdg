@@ -2,57 +2,20 @@
 부사
 """
 from mkdg.utils.chgword import chg_word
+from mkdg.utils.getmisspell import misspell_single_data
 
 
 def load_adverb():
-    adverb = {
-        "좀": [
-            "좀",
-            "쫌",
-            "촘",
-        ],
-        "더": [
-            "더",
-            "떠",
-        ],
-        "많이": [
-            "많이",
-            "만이",
-        ],
-        "안": [
-            "안",
-            "앙",
-        ],
-        "따로": [
-            "따로",
-            "따루",
-        ],
-        "다": [
-            "다",
-            "따", "타",
-        ],
-        "잘": [
-            "잘",
-            "자알",
-        ],
-        "지금": [
-            "지금",
-            "직금", "작금",
-        ],
-        "혹시": [
-            "혹시",
-            "호옥시",
-        ],
-        "얼마나": [
-            "얼마나",
-            "얼만아",
-        ]
-    }
+    """
+    Load adverb data
 
+    Returns: adverb dictionary, alternative list
+    """
+    filename = "data/adverb.csv"
+    adverb = misspell_single_data(filename)
     alternative = {
 
     }
-
     return adverb, alternative
 
 

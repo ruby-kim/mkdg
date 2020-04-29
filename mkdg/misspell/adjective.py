@@ -2,104 +2,20 @@
 형용사
 """
 from mkdg.utils.chgword import chg_word
+from mkdg.utils.getmisspell import misspell_single_data
 
 
 def load_adjective():
-    adjective = {
-        "같": [
-            "같",
-            "갓", "갇",
-        ],
-        "괜찮": [
-            "괜찮",
-            "괜찬", "괞찮",
-        ],
-        "그렇": [
-            "그렇",
-            "그렿", "그럿",
-        ],
-        "낫": [
-            "낫",
-        ],
-        "낮": [
-            "낮",
-        ],
-        "늦": [
-            "늦",
-            "늣", "늧", "늗",
-        ],
-        "다르": [
-            "다르",
-            "다른",
-        ],
-        "맛있": [
-            "맛있",
-            "맛잇", "맜있", "맜잇",
-        ],
-        "많": [
-            "많",
-            "만", "맣",
-        ],
-        "맵": [
-            "맵",
-        ],
-        "상관없": [
-            "상관없",
-            "상관업", "상간없",
-        ],
-        "세": [
-            "세",
-            "새",
-        ],
-        "쉽": [
-            "쉽",
-            "십", "싑",
-        ],
-        "어렵": [
-            "어렵",
-            "어럽", "여렵",
-        ],
-        "어리": [
-            "어리",
-            "어린", "여리",
-        ],
-        "어떻": [
-            "어떻",
-            "어떡",
-        ],
-        "없": [
-            "없",
-            "업"
-        ],
-        "이렇": [
-            "이렇",
-            "이러",
-        ],
-        "작": [
-            "작",
-            "닥",
-        ],
-        "재밌": [
-            "재밌",
-            "재밋", "제밋", "제밌",
-        ],
-        "좋": [
-            "좋",
-            "조",
-        ],
-        "크": [
-            "크",
-            "큰",
-        ],
-        "편하": [
-            "편하",
-        ],
-    }
+    """
+    Load adjective data
 
+    Returns: adjective dictionary, alternative list
+    """
+    filename = "data/adjective.csv"
+    adjective = misspell_single_data(filename)
     alternative = {
 
     }
-
     return adjective, alternative
 
 

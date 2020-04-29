@@ -2,60 +2,20 @@
 관형사
 """
 from mkdg.utils.chgword import chg_word
+from mkdg.utils.getmisspell import misspell_single_data
 
 
 def load_determiner():
-    determiner = {
-        "네": [
-            "네",
-            "넴", "넹", "넷", "넵",
-        ],
-        "몇": [
-            "몇",
-            "몃",
-        ],
-        "한": [
-            "한",
-            "함",
-        ],
-        "어떤": [
-            "어떤",
-            "어딴", "어뜬", "어던",
-        ],
-        "두": [
-            "두",
-        ],
-        "이": [
-            "이",
-        ],
-        "그": [
-            "그",
-            "끄",
-        ],
-        "다른": [
-            "다른",
-        ],
-        "이런": [
-            "이런",
-            "이론", "이른", "오런", "요런",
-        ],
-        "세": [
-            "세",
-        ],
-        "요": [
-            "요",
-            "욤", "욘", "욧", "용",
-        ],
-        "저": [
-            "저",
-            "젓", "저어",
-        ]
-    }
+    """
+    Load determiner data
 
+    Returns: determiner dictionary, alternative list
+    """
+    filename = "data/determiner.csv"
+    determiner = misspell_single_data(filename)
     alternative = {
 
     }
-
     return determiner, alternative
 
 
@@ -68,6 +28,6 @@ if __name__ == "__main__":
 
     print("Origin: ", test)
     determiner, alternative = load_determiner()
-    result = chg_word(test, determiner)  # , alternative)
+    result = chg_word(test, determiner)  # , alt)
     print("Result: ", result)
 

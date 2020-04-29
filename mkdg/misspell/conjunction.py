@@ -2,49 +2,17 @@
 접속사
 """
 from mkdg.utils.chgword import chg_word
+from mkdg.utils.getmisspell import misspell_single_data
 
 
 def load_conjunction():
-    conjunction = {
-        "그럼": [
-            "그러면", "그럼",
-            "글면", "구럼", "그롬", "구롬", "고럼", "글묜",
-            "고러면", "구러면", "그로면", "그르면", "그르묜",
-        ],
-        "그리고": [
-            "그리고",
-            "글구", "구리구", "구리고", "그리구",
-        ],
-        "또": [
-            "또",
-            "또오", "토",
-        ],
-        "근데": [
-            "근데", "그런데",
-            "그렁대", "그렁데", "그론데", "그론디", "그런디",
-            "긍데", "근디", "긍디",
-        ],
-        "그래도": [
-            "그래도",
-            "그래두", "구래도", "구래두",
-        ],
-        "그래서": [
-            "그래서", "따라서",
-            "구래서", "그뤠서", "구뤠서",
-            "따라숴", "따롸서",
-        ],
-        "그러니까": [
-            "그러니까",
-            "구로니까", "구러니까", "그로니까",
-        ],
-        "그렇지만": [
-            "그렇지만", "하지만",
-            "그치만",
-            "구치만", "그취만", "그롷지만", "그러치만", "그럿치만",
-            "허지먼", "하지먼", "허지만",
-        ],
-    }
+    """
+    Load conjunction data
 
+    Returns: conjunction dictionary, alternative list
+    """
+    filename = "data/conjunction.csv"
+    conjunction = misspell_single_data(filename)
     alternative = {
         "그러면": "그럼",
         "그런데": "근데",

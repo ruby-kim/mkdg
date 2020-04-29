@@ -1,66 +1,21 @@
 """
 동사
-    * 니다: 습니다와 통합하여 사용
 """
 from mkdg.utils.chgword import chg_word
+from mkdg.utils.getmisspell import misspell_single_data
 
 
 def load_verb():
-    verb = {
-        "되": [
-            "되",
-            "돼",
-        ],
-        "하": [
-            "하",
-        ],
-        "있": [
-            "있",
-            "잇",
-        ],
-        "먹": [
-            "먹",
-        ],
-        "드리": [
-            "드리",
-        ],
-        "들어가": [
-            "들어가",
-            "드러가",
-        ],
-        "나오": [
-            "나오",
-        ],
-        "들": [
-            "들",
-        ],
-        "나가": [
-            "나가",
-        ],
-        "걸리": [
-            "걸리",
-        ],
-        "입": [
-            "입",
-            "잎",
-        ],
-        "보이": [
-            "보이",
-        ],
-        "신": [
-            "신",
-            "씬",
-        ],
-        "찾": [
-            "찾",
-            "차",
-        ]
-    }
+    """
+    Load verb data
 
+    Returns: verb dictionary, alternative list
+    """
+    filename = "data/verb.csv"
+    verb = misspell_single_data(filename)
     alternative = {
         "습니다": "니다"
     }
-
     return verb, alternative
 
 

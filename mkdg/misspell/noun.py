@@ -2,65 +2,20 @@
 명사
 """
 from mkdg.utils.chgword import chg_word
+from mkdg.utils.getmisspell import misspell_single_data
 
 
 def load_noun():
-    noun = {
-        "배달": [
-            "배달",
-            "배다", "베달",
-        ],
-        "카드": [
-            "카드",
-            "커드", "캬드",
-        ],
-        "세트": [
-            "세트",
-            "세뜨", "셋트","셋뜨",
-        ],
-        "주문": [
-            "주문",
-            "주뭄", "주뭉",
-        ],
-        "가능": [
-            "가능",
-            "카능", "카넝", "카느엉", "가느엉",
-        ],
-        "메뉴": [
-            "메뉴",
-            "마뉴"
-        ],
-        "얼마": [
-            "얼마",
-        ],
-        "추가": [
-            "추가",
-            "츠가", "츄가",
-        ],
-        "예약": [
-            "예약",
-            "예악", "에약", "에악",
-        ],
-        "정도": [
-            "정도",
-            "정두"
-        ],
-        "결제": [
-            "결제",
-            "결재"
-        ],
-        "할인": [
-            "할인",
-            "활인",
-        ],
-        "가격": [
-            "가격",
-        ]
-    }
+    """
+    Load noun data
 
+    Returns: noun dictionary, alternative list
+    """
+    filename = "data/noun.csv"
+    noun = misspell_single_data(filename)
     alternative = {
-    }
 
+    }
     return noun, alternative
 
 
