@@ -2,16 +2,16 @@
 접사
 """
 from mkdg.utils.chgword import chg_word
-from mkdg.utils.getmisspell import misspell_single_data
 
 
 def load_suffix():
+    from mkdg.utils.getmisspell import misspell_single_data
     """
     Load suffix data
 
     Returns: suffix dictionary, alternative list
     """
-    filename = "data/suffixe.csv"
+    filename = "data/suffix.csv"
     suffix = misspell_single_data(filename)
     alternative = {
 

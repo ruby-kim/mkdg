@@ -30,8 +30,11 @@ def misspell_single_data(filename):
             if type(data.loc[i][j]) is str:
                 if j == 1:  # Add origin word
                     chgWord.append(data.loc[i][0])
-                chgWord.append(data.loc[i][j])
+                else:
+                    chgWord.append(data.loc[i][j])
             else:
+                if j == 1:
+                    chgWord.append(data.loc[i][0])
                 break
         misspell[data.loc[i][0]] = chgWord
     return misspell

@@ -2,10 +2,10 @@
 형용사
 """
 from mkdg.utils.chgword import chg_word
-from mkdg.utils.getmisspell import misspell_single_data
 
 
 def load_adjective():
+    from mkdg.utils.getmisspell import misspell_single_data
     """
     Load adjective data
 

@@ -7,7 +7,7 @@ Implement making misspelled korean data operator
 import re
 
 from mkdg.utils.loadfile import read_text_file
-from mkdg.utils.getmisspell import misspell_data
+from mkdg.utils.getmisspell import misspell_all_data
 from mkdg.utils.chgword import chg_word
 from mkdg.utils.writefile import save_text_file
 
@@ -32,7 +32,7 @@ if __name__ == '__main__':
     noun, noun_alt, \
     preEomi, preEomi_alt, \
     suffix, suffix_alt, \
-    verb, verb_alt = misspell_data()
+    verb, verb_alt = misspell_all_data()
 
     """ make mis-spell contents """
     result = chg_word(raw_text, adjective, adjective_alt)

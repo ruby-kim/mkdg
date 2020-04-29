@@ -2,10 +2,10 @@
 관형사
 """
 from mkdg.utils.chgword import chg_word
-from mkdg.utils.getmisspell import misspell_single_data
 
 
 def load_determiner():
+    from mkdg.utils.getmisspell import misspell_single_data
     """
     Load determiner data
 

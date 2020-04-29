@@ -24,7 +24,10 @@ def chg_word(content, dict, alt=None):
 
             # 문장 내에 [원래 형태]가 존재 시, [바꾸고 싶은 형태]로 랜덤 뽑기 및 변환
             if len(check) is not 0:
-                randChg = value[random.randint(0, len(value)-1)]
+                if len(check) == 1:
+                    randChg = value[0]
+                else:
+                    randChg = value[random.randint(0, len(value)-1)]
                 content[i] = content[i].replace(key, randChg)
 
     return content
