@@ -184,7 +184,7 @@ def frequency(contents):
     dict = Tag_dict(contents)
     dict.judge_tag()
     # dict.print_morph()
-    dict.print_frequency()  #부사부터 정리하고 막..하기...ㅠㅠ..
+    dict.print_frequency()
     # dict.print_dict("noun")
 
 

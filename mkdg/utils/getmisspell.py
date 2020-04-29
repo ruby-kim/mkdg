@@ -9,8 +9,40 @@ from mkdg.misspell.preEomi import load_preEomi
 from mkdg.misspell.suffix import load_suffix
 from mkdg.misspell.verb import load_verb
 
+from mkdg.utils.loadfile import read_csv_file
 
-def misspell_data():
+
+def misspell_single_data(filename):
+    """
+    Get mis-spell dictionary, key: origin / value: change word list
+        Args:
+            :param: filename(str): the path of file
+        Returns:
+            :param: misspell(dict): mis-spell dictionary (from .csv file)
+    """
+    data = read_csv_file(filename)
+
+    misspell = dict()   # mis-spell dictionary
+
+    for i in range(data.shape[0]):
+        chgWord = list()  # change word list
+        for j in range(1, data.shape[1]):
+            if type(data.loc[i][j]) is str:
+                if j == 1:  # Add origin word
+                    chgWord.append(data.loc[i][0])
+                chgWord.append(data.loc[i][j])
+            else:
+                break
+        misspell[data.loc[i][0]] = chgWord
+    return misspell
+
+
+def misspell_all_data():
+    """
+    Get all of mis-spell dictionaries, key: origin / value: change word list
+        Returns:
+            :param: all of mis-spell dictionaries & alternative list
+    """
     adjective, adjective_alt = load_adjective()
     adverb, adverb_alt = load_adverb()
     conjunction, conjunction_alt = load_conjunction()
@@ -44,6 +76,4 @@ if __name__ == "__main__":
     noun, noun_alt, \
     preEomi, preEomi_alt, \
     suffix, suffix_alt, \
-    verb, verb_alt = misspell_data()
-
-    print(noun)
+    verb, verb_alt = misspell_all_data()
