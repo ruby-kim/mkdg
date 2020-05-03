@@ -7,6 +7,10 @@
   ```bash
   pip install konlpy
   ```
+* pandas
+  ```bash
+  pip install pandas
+  ```
 <br>
 
 ## Installation
@@ -18,7 +22,7 @@ python setup.py install
 <br>
 
 ## Getting Started
-1. 원본 파일을 ```./data``` 폴더에 넣어주세요.
+1. 원본 파일을 ```./data``` 폴더에 넣어주세요. (없을 시 폴더 생성)
 2. ```./misspell.py```에서 18번 째 줄의 ```filename = "A 음식점(15,726)_only_speak.txt"```을 원하는 파일 이름으로 변경해주세요.
 3. 코드를 실행 시 문법오류가 있는 데이터가 ```./data/tgt/``` 폴더에 .txt 형태로 저장됩니다.
    ```bash
