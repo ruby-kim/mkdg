@@ -20,9 +20,9 @@ python 파일 실행은 최상위에서(git clone 후 cd하면 바로 나오는 
 <br><br>
 
 ## 4. ```mkdg/misspell/```
-* 형용사(adjective), 부사(adverb), 접속사(conjunction), 관형사(determiner), 어미(eomi), 조사(josa), 명사(noun), 선어말어미(preEomi), 접사(suffix), 동사(verb) 목록 제작
-* 각 태그별 csv 파일 내용을 추출함 (```data/___.csv```)
-* 기본 작성법: 각 태그의 csv 파일을 연 후, 아래와 같이 수정해주세요.<br>
+* ```data/misspell.xlsx```에서 타겟단어 및 변경할 형태 작성
+* sheet 종류: adjective(형용사), adverb(부사), conjunction(접속사), determiner(관형사), eomi(어미), josa(조사), noun(명사), preEomi(선어말어미), suffix(접사), verb(동사)
+* 기본 작성법: 해당 sheet를 선택 후, 아래와 같이 수정해주세요.<br>
   |origin|change 1|change 2| ... |
   |:--:|:--:|:--:|:--:|
   |원래 단어1|변경할 형태1|변경할 형태 2|...|
@@ -41,13 +41,13 @@ python 파일 실행은 최상위에서(git clone 후 cd하면 바로 나오는 
 <br><br>
 
 ### 3) getmisspell.py
-* ```data/___.csv```에서 추출된 tag별 값들을 모두 불러온 후 저장
+* ```data/misspell.xlsx```에서 추출된 tag별 값들을 모두 불러온 후 저장
 * tag: 형용사, 부사, 접속사, 관형사, 어미, 조사, 명사, 선어말어미, 접사, 동사
 <br><br>
 
 ### 4) loadfile.py
-* ```원본.txt```와 ```___.csv```의 내용을 추출함
-* 원본은 ```.txt```, 태그는 ```.csv``` 확장명 사용
+* ```원본.txt```와 ```misspell.xlsx```의 내용을 추출함
+* 원본은 ```.txt```, 태그는 ```.xlsx``` 확장명 사용
 <br><br>
 
 ### 5) preprocess.py
