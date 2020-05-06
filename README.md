@@ -11,6 +11,10 @@
   ```bash
   pip install pandas
   ```
+* xlrd
+  ```bash
+  pip install xlrd
+  ```
 <br>
 
 ## Installation
