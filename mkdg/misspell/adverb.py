@@ -11,8 +11,7 @@ def load_adverb():
 
     Returns: adverb dictionary, alternative list
     """
-    filename = "data/adverb.csv"
-    adverb = misspell_single_data(filename)
+    adverb = misspell_single_data("adverb")
     alternative = {
 
     }

@@ -9,8 +9,7 @@ def load_preEomi():
 
     Returns: preEomi dictionary, alternative list
     """
-    filename = "data/preEomi.csv"
-    preEomi = misspell_single_data(filename)
+    preEomi = misspell_single_data("preEomi")
     alternative = {
         "었": "있었",
     }

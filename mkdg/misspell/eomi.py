@@ -11,8 +11,7 @@ def load_eomi():
 
     Returns: eomi dictionary, alternative list
     """
-    filename = "data/eomi.csv"
-    eomi = misspell_single_data(filename)
+    eomi = misspell_single_data("eomi")
     alternative = {
         "습니다": "니다",
     }

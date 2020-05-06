@@ -11,8 +11,7 @@ def load_conjunction():
 
     Returns: conjunction dictionary, alternative list
     """
-    filename = "data/conjunction.csv"
-    conjunction = misspell_single_data(filename)
+    conjunction = misspell_single_data("conjunction")
     alternative = {
         "그러면": "그럼",
         "그런데": "근데",

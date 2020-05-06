@@ -11,8 +11,7 @@ def load_suffix():
 
     Returns: suffix dictionary, alternative list
     """
-    filename = "data/suffix.csv"
-    suffix = misspell_single_data(filename)
+    suffix = misspell_single_data("suffix")
     alternative = {
 
     }

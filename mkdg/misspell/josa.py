@@ -18,8 +18,7 @@ def load_josa():
 
     Returns: josa dictionary, alternative list
     """
-    filename = "data/josa.csv"
-    josa = misspell_single_data(filename)
+    josa = misspell_single_data("josa")
     alternative = {
 
     }

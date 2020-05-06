@@ -11,8 +11,7 @@ def load_adjective():
 
     Returns: adjective dictionary, alternative list
     """
-    filename = "data/adjective.csv"
-    adjective = misspell_single_data(filename)
+    adjective = misspell_single_data("adjective")
     alternative = {
 
     }

@@ -4,8 +4,8 @@ Implement load file: csv, text
 import pandas as pd
 
 
-def read_csv_file(filename):
-    data = pd.read_csv(filename)
+def read_csv_file(sheet_name):
+    data = pd.read_excel("data/misspell.xlsx", sheet_name=sheet_name)
     return data
 
 
@@ -23,7 +23,5 @@ if __name__ == "__main__":
     # print(raw_text)
 
     """ csv file """
-    filename = "./data/test.csv"
-    raw_text = read_csv_file(filename)
+    raw_text = read_csv_file("adjective")
     print(raw_text)
-

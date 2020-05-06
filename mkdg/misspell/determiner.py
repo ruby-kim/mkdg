@@ -11,8 +11,7 @@ def load_determiner():
 
     Returns: determiner dictionary, alternative list
     """
-    filename = "data/determiner.csv"
-    determiner = misspell_single_data(filename)
+    determiner = misspell_single_data("determiner")
     alternative = {
 
     }

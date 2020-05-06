@@ -12,7 +12,7 @@ from mkdg.misspell.verb import load_verb
 from mkdg.utils.loadfile import read_csv_file
 
 
-def misspell_single_data(filename):
+def misspell_single_data(sheet_name):
     """
     Get mis-spell dictionary, key: origin / value: change word list
         Args:
@@ -20,7 +20,7 @@ def misspell_single_data(filename):
         Returns:
             :param: misspell(dict): mis-spell dictionary (from .csv file)
     """
-    data = read_csv_file(filename)
+    data = read_csv_file(sheet_name)
 
     misspell = dict()   # mis-spell dictionary
 

@@ -11,8 +11,7 @@ def load_noun():
 
     Returns: noun dictionary, alternative list
     """
-    filename = "data/noun.csv"
-    noun = misspell_single_data(filename)
+    noun = misspell_single_data("noun")
     alternative = {
 
     }

@@ -11,8 +11,7 @@ def load_verb():
 
     Returns: verb dictionary, alternative list
     """
-    filename = "data/verb.csv"
-    verb = misspell_single_data(filename)
+    verb = misspell_single_data("verb")
     alternative = {
         "습니다": "니다"
     }

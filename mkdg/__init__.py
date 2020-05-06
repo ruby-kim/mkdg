@@ -9,6 +9,7 @@ __download_url__ = 'https://github.com/study-ai-data/mkdg'
 __install_requires__ = [
     "konlpy",   # komoran
     "pandas",
+    "xlrd",
 ]
 __license__ = 'MIT'
 
