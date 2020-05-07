@@ -4,12 +4,25 @@ python 파일 실행은 최상위에서(git clone 후 cd하면 바로 나오는 
 
 ## 1. ```data/```
 * 데이터와 관련된 파일들 저장
+* 전처리 된, 문법을 틀리게 하고 싶은 .txt 파일 넣기
 * 원본 소스는 올리지 말것(.gitignore 참고)
-* 파일 목록
-  * 전처리 된, 문법을 틀리게 하고 싶은 .txt 파일 넣기
-  * user_dict.txt: 코모란 사용자 사전 ```추가하고 싶은 단어\n```
+
+### 1) ```data/user_dict.txt```
+* 코모란 사용자 사전
+* 나무, 친구 등 명사로 취급해야 하는 단어가 '나','무' / '친','구' 등의 형태로 분리되어서 나올 때 해당 단어 추가<br>```추가하고 싶은 단어\n```
 <br><br>
- 
+
+### 2) ```data/misspell.xlsx```
+* 타겟단어(원래형태) 및 변경할 형태 작성
+* sheet 종류: adjective(형용사), adverb(부사), conjunction(접속사), determiner(관형사), eomi(어미), josa(조사), noun(명사), preEomi(선어말어미), suffix(접사), verb(동사)
+* 기본 작성법: 해당 sheet를 선택 후, 아래와 같이 수정해주세요.<br>
+  |origin|change 1|change 2| ... |
+  |:--:|:--:|:--:|:--:|
+  |원래 단어1|변경할 형태1|변경할 형태 2|...|
+  |원래 단어2|변경할 형태1|변경할 형태 2|...|
+* 기본적으로 행의 **change ~**는 10번까지 존재합니다. 변경할 형태가 10개가 넘어도 코드는 정상적으로 작동되니 마음껏 추가하세요.
+<br><br>
+
 ## 2. ```./misspell.py```
 * 실행 시 ```data/```폴더의 특정 데이터를 문법오류가 있는 데이터로 변경 후 ```data/tgt/```폴더에 저장
 <br><br>
@@ -20,13 +33,34 @@ python 파일 실행은 최상위에서(git clone 후 cd하면 바로 나오는 
 <br><br>
 
 ## 4. ```mkdg/misspell/```
-* ```data/misspell.xlsx```에서 타겟단어 및 변경할 형태 작성
-* sheet 종류: adjective(형용사), adverb(부사), conjunction(접속사), determiner(관형사), eomi(어미), josa(조사), noun(명사), preEomi(선어말어미), suffix(접사), verb(동사)
-* 기본 작성법: 해당 sheet를 선택 후, 아래와 같이 수정해주세요.<br>
-  |origin|change 1|change 2| ... |
-  |:--:|:--:|:--:|:--:|
-  |원래 단어1|변경할 형태1|변경할 형태 2|...|
-  |원래 단어2|변경할 형태1|변경할 형태 2|...|
+* ```data/misspell.xlsx```에서 작성된 목록을 불러온 후 데이터프레임화
+* 기본 작성법은 아래와 같습니다. (아래의 파일은 ```mkdg/misspell/adjective.py```의 일부입니다)
+  ```python
+  def load_adjective():
+      from mkdg.utils.getmisspell import misspell_single_data
+      
+      adjective = misspell_single_data("adjective")
+      alternative = {
+          "똑같은 취급을 해주고 싶은 단어1": "원래 단어1",
+          "뜩같은 취급을 해주고 싶은 단어2": "원래 단어2",
+          ...
+      }
+      return adjective, alternative
+  ```
+* 만약 alternative를 작성했다면, "똑같은 취급을 해주고 싶은 단어"를 ```data/misspell.xlsx```에서 해당하는 sheet로 이동 후 **change**항목에 작성해주세요.<br>
+  예를 들어<br>
+  ```python
+  # mkdg/misspell/eomi.py
+  alternative = {
+      "습니다": "니다",
+  }
+  ```
+  라고 작성했다면, 여기서 "똑같은 취급을 해주고 싶은 단어"=>"습니다" / "원래 단어"=>"니다"가 됩니다.<br>
+  그러면 ```data/misspell.xlsx```에서 sheet가 eomi인 곳으로 이동 후, 다음과 같이 표를 구성합니다.<br>
+  |origin|change 1| ... |
+  |:--:|:--:|:--:|
+  |니다|습니다|...|
+
 <br><br>
 
 ## 5. ```mkdg/utils/```
