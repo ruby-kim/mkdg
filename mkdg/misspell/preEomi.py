@@ -12,6 +12,7 @@ def load_preEomi():
     preEomi = misspell_single_data("preEomi")
     alternative = {
         "었": "있었",
+        "엇": "있었",
     }
     return preEomi, alternative
 

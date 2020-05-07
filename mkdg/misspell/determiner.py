@@ -13,7 +13,7 @@ def load_determiner():
     """
     determiner = misspell_single_data("determiner")
     alternative = {
-
+        "요런": "이런",
     }
     return determiner, alternative
 
