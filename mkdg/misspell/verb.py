@@ -13,7 +13,6 @@ def load_verb():
     """
     verb = misspell_single_data("verb")
     alternative = {
-        "습니다": "니다"
     }
     return verb, alternative
 
