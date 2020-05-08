@@ -15,7 +15,7 @@ from mkdg.utils.writefile import save_text_file
 if __name__ == '__main__':
     """ Setting parameters input & description """
     #filename = setting_parse()
-    filename = "D 소매점(14,949)_only_speak.txt"
+    filename = "F 카페(7,859)_only_speak.txt"
     path = "./data/" + filename
     raw_text = read_text_file(path)
     for i in range(len(raw_text)):

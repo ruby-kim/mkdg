@@ -189,7 +189,7 @@ def frequency(contents):
 
 
 if __name__ == "__main__":
-    filename = "E 생활서비스(11,087)_only_speak.txt"
+    filename = "F 카페(7,859)_only_speak.txt"
     path = "./data/" + filename
     raw_text = read_text_file(path)
     frequency(raw_text)
