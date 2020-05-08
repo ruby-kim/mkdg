@@ -17,6 +17,8 @@ def load_conjunction():
         "그런데": "근데",
         "따라서": "그래서",
         "하지만": "그렇지만",
+        "그러나": "그렇지만",
+        "또는": "또",
     }
 
     return conjunction, alternative

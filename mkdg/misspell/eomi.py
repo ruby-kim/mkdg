@@ -14,6 +14,8 @@ def load_eomi():
     eomi = misspell_single_data("eomi")
     alternative = {
         "습니다": "니다",
+        "는데요": "는데",
+
     }
     return eomi, alternative
 
