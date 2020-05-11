@@ -22,12 +22,23 @@ def save_csv_file(filename, texts):
             writer.writerow(text)
 
 
-def save_text_file(filename, texts):
-    targetPath = os.getcwd() + "/data/tgt/"
-    check_tgt_folder(targetPath)
-    filename = (targetPath + filename).replace(".txt", "")
+def save_text_file(filename, texts, func=None):
+    if func is None:
+        targetPath = os.getcwd() + "/data/tgt/"
+        check_tgt_folder(targetPath)
+        filename = (targetPath + filename).replace(".txt", "")
+        file = open(filename + "_change.txt", "w", encoding="utf-8")
+    elif func is "morph":
+        targetPath = os.getcwd() + "/data/comp/"
+        check_tgt_folder(targetPath)
+        filename = (targetPath + filename).replace(".txt", "")
+        file = open(filename + "_morph.txt", "w", encoding="utf-8")
+    elif func is "pos":
+        targetPath = os.getcwd() + "/data/comp/"
+        check_tgt_folder(targetPath)
+        filename = (targetPath + filename).replace(".txt", "")
+        file = open(filename + "_pos.txt", "w", encoding="utf-8")
 
-    file = open(filename + "_change.txt", "w", encoding="utf-8")
     for text in texts:
         file.write(text)
     file.close()
