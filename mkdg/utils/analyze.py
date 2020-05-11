@@ -1,10 +1,11 @@
 """
-analyze top word frequency
+analyze sentences & top word frequency
 """
 import re
 from konlpy.tag import Komoran
 
 from mkdg.utils.loadfile import read_text_file
+from mkdg.utils.writefile import save_text_file
 
 
 def tag_switch(tag):
@@ -171,10 +172,25 @@ class Tag_dict:
             result = self.komoran.morphs(text)
             print(result)
 
+    def print_pos(self):
+        for text in self.content:
+            result = self.komoran.pos(text)
+            print(result)
 
-def frequency(contents):
+    def print_compare(self, form):
+        result = ""
+        if form is "morph":
+            for text in self.content:
+                result += text + str(self.komoran.morphs(text)) + "\n\n"
+        else:       # pos
+            for text in self.content:
+                result += text + str(self.komoran.pos(text)) + "\n\n"
+        save_text_file(filename, result, form)
+
+
+def analyze(contents):
     """
-    check word frequency
+    analyze texts
 
     Args:
         :param: contents(list)
@@ -183,13 +199,16 @@ def frequency(contents):
     """
     dict = Tag_dict(contents)
     dict.judge_tag()
-    # dict.print_morph()
-    dict.print_frequency()
-    # dict.print_dict("noun")
+    # dict.print_morph()            # print morph text
+    # dict.print_pos()              # print pos text
+    # dict.print_frequency()        # print top frequency 30 words (default: 30)
+    # dict.print_dict("noun")       # print selected tag list
+    # dict.print_compare("morph")   # print origin text & morph text
+    dict.print_compare("pos")        # print origin text & pos text
 
 
 if __name__ == "__main__":
     filename = "F 카페(7,859)_only_speak.txt"
     path = "./data/" + filename
     raw_text = read_text_file(path)
-    frequency(raw_text)
+    analyze(raw_text)
