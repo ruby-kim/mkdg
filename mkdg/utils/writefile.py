@@ -28,16 +28,14 @@ def save_text_file(filename, texts, func=None):
         check_tgt_folder(targetPath)
         filename = (targetPath + filename).replace(".txt", "")
         file = open(filename + "_change.txt", "w", encoding="utf-8")
-    elif func is "morph":
+    else:
         targetPath = os.getcwd() + "/data/comp/"
         check_tgt_folder(targetPath)
         filename = (targetPath + filename).replace(".txt", "")
-        file = open(filename + "_morph.txt", "w", encoding="utf-8")
-    elif func is "pos":
-        targetPath = os.getcwd() + "/data/comp/"
-        check_tgt_folder(targetPath)
-        filename = (targetPath + filename).replace(".txt", "")
-        file = open(filename + "_pos.txt", "w", encoding="utf-8")
+        if func is "morph":
+            file = open(filename + "_morph.txt", "w", encoding="utf-8")
+        elif func is "pos":
+            file = open(filename + "_pos.txt", "w", encoding="utf-8")
 
     for text in texts:
         file.write(text)
