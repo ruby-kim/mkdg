@@ -85,8 +85,9 @@ python 파일 실행은 최상위에서(git clone 후 cd하면 바로 나오는 
 1. print_frequency: 사용된 단어의 빈도수를 tag별로 내림차순으로 출력(기본값: 30개)
 2. judge_tag: 문장별 형태소 분석 후, 각 단어의 tag 판별
 3. print_dict: judge_tag 이후 tag별 리스트 출력
-4. print_morph: 원본의 형태소 분석 결과 출력
-5. print_compare: 원본과 원본의 형태소 분석 결과를 한 줄 씩 출력
+4. print_morph: 원본의 형태소 분석 결과(텍스트) 출력
+5. print_pos: 원본의 형태소 분석 결과(텍스트, 태그) 출력
+6. print_compare: 원본과 원본의 형태소 분석 결과를 한 줄 씩 출력
 <br><br>
 
 ### 3) getmisspell.py
