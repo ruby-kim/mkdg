@@ -14,7 +14,7 @@ python 파일 실행은 최상위에서(git clone 후 cd하면 바로 나오는 
 
 ### 2) ```data/misspell.xlsx```
 * 타겟단어(원래형태) 및 변경할 형태 작성
-* sheet 종류: adjective(형용사), adverb(부사), conjunction(접속사), determiner(관형사), eomi(어미), josa(조사), noun(명사), preEomi(선어말어미), suffix(접사), verb(동사)
+* sheet 종류: adjective(형용사), adverb(부사), conjunction(접속사), determiner(관형사), eomi(어미), josa(조사), noun(명사), preEomi(선어말어미), suffix(접사), verb(동사)  [[참고사이트]](https://docs.komoran.kr/firststep/postypes.html)
 * 기본 작성법: 해당 sheet를 선택 후, 아래와 같이 수정해주세요.<br>
   |origin|change 1|change 2| ... |
   |:--:|:--:|:--:|:--:|
@@ -66,12 +66,27 @@ python 파일 실행은 최상위에서(git clone 후 cd하면 바로 나오는 
 ## 5. ```mkdg/utils/```
 ### 1) chgword.py
 * 원본을 맞춤법이 틀린 단어들로 바꾸는 코드
+* 변경 후 원본 그대로 나올 확률은 1/n
+  ```
+  origin: 안녕하세요
+  change: 안녕, 안뇽, 앙녕, 안녀영
+  
+  이라고 있을 시,
+  '안녕하세요'를 변경하여 다시 '안녕하세요'가 나올 확률은 1/5
+  다른 단어들 또한 1/5 확률로 랜덤 변경
+  ```
 * 개발 완료된 상태로, 기능 향상에 대해서 코드 수정 및 pull request 부탁드립니다.
 <br><br>
 
-### 2) frequency.py
-* ```data/원본.txt```에서 사용된 단어의 빈도수를 tag별로 내림차순으로 출력(기본값: 30개)
+### 2) analyze.py
+* ```data/원본.txt```파일 분석
 * tag: 형용사, 부사, 접속사, 관형사, 어미, 조사, 명사, 선어말어미, 접사, 동사
+* 사용법은 182~196번째 줄의 analyze 함수 참고
+1. print_frequency: 사용된 단어의 빈도수를 tag별로 내림차순으로 출력(기본값: 30개)
+2. judge_tag: 문장별 형태소 분석 후, 각 단어의 tag 판별
+3. print_dict: judge_tag 이후 tag별 리스트 출력
+4. print_morph: 원본의 형태소 분석 결과 출력
+5. print_compare: 원본과 원본의 형태소 분석 결과를 한 줄 씩 출력
 <br><br>
 
 ### 3) getmisspell.py
