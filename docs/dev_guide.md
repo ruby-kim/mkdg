@@ -9,7 +9,7 @@ python 파일 실행은 최상위에서(git clone 후 cd하면 바로 나오는 
 
 ### 1) ```data/user_dict.txt```
 * 코모란 사용자 사전
-* 나무, 친구 등 명사로 취급해야 하는 단어가 '나','무' / '친','구' 등의 형태로 분리되어서 나올 때 해당 단어 추가<br>```추가하고 싶은 단어\n```
+* 나무, 친구 등 명사로 취급해야 하는 단어가 '나','무' / '친','구' 등의 형태로 분리되어서 나올 때 해당 단어 추가<br>```추가하고 싶은 단어    형태소종류\n```
 <br><br>
 
 ### 2) ```data/misspell.xlsx```
@@ -81,13 +81,17 @@ python 파일 실행은 최상위에서(git clone 후 cd하면 바로 나오는 
 ### 2) analyze.py
 * ```data/원본.txt```파일 분석
 * tag: 형용사, 부사, 접속사, 관형사, 어미, 조사, 명사, 선어말어미, 접사, 동사
-* 사용법은 182~196번째 줄의 analyze 함수 참고
-1. print_frequency: 사용된 단어의 빈도수를 tag별로 내림차순으로 출력(기본값: 30개)
-2. judge_tag: 문장별 형태소 분석 후, 각 단어의 tag 판별
-3. print_dict: judge_tag 이후 tag별 리스트 출력
+* 사용법은 235~245번째 줄의 analyze 함수 참고
+1. print_len: ```data/원본.txt```의 문장 수 출력
+2. print_origin_frequency: ```data/원본.txt```를 띄어쓰기 기준으로 단어 생성 후, 해당 값의 빈도수를 내림차순으로 모두 출력
+3. judge_tag: ```data/원본.txt```의 문장별 형태소 분석 후, 각 단어의 tag 판별
 4. print_morph: 원본의 형태소 분석 결과(텍스트) 출력
 5. print_pos: 원본의 형태소 분석 결과(텍스트, 태그) 출력
-6. print_compare: 원본과 원본의 형태소 분석 결과를 한 줄 씩 출력
+6. print_tag_frequency: tag 별 사용된 단어의 빈도수를 내림차순으로 출력(기본값: 30개)
+7. print_dict: 인자로 들어가는 tag 값의 리스트 출력
+8. save_compare("morph"): 4번의 ```print_morph```의 값을 ```data/analyze/원본_morph.txt``` 에 저장
+9. save_compare("pos"): 5번의 ```print_pos```의 값을 ```data/analyze/원본_pos.txt```에 저장
+10. save_origin_frequency: 2번의 ```print_origin_frequency```의 값을 ```data/analyze/원본_origin.txt```에 저장
 <br><br>
 
 ### 3) getmisspell.py

@@ -240,8 +240,8 @@ def analyze(contents):
     # dict.print_pos()                  # print pos text
     # dict.print_tag_frequency()        # print top tag frequency words count (default: 30)
     # dict.print_dict("noun")           # print selected tag list
-    # dict.save_compare("morph")        # save all of origin text & morph text
-    # dict.save_compare("pos")          # save all of origin text & pos text
+    dict.save_compare("morph")        # save all of origin text & morph text
+    dict.save_compare("pos")          # save all of origin text & pos text
     dict.save_origin_frequency()        # save all of origin frequency words count
 
 
