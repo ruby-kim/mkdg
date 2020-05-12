@@ -14,6 +14,10 @@
 * xlrd
   ```bash
   pip install xlrd
+* soyspacing
+  ```bash
+  pip install soyspacing
+  ```
   ```
 <br>
 

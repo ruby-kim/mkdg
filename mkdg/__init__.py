@@ -10,6 +10,7 @@ __install_requires__ = [
     "konlpy",   # komoran
     "pandas",
     "xlrd",
+    "soyspacing",
 ]
 __license__ = 'MIT'
 
