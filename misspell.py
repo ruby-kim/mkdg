@@ -39,7 +39,7 @@ from mkdg.utils.writefile import save_text_file
 if __name__ == '__main__':
     """ Setting parameters input & description """
     #filename = setting_parse()
-    filename = "H 관광여가오락(4,949)_only_speak.txt"
+    filename = "J 민원 교통_최종본(0416)_only_speak.txt"
     path = "./data/" + filename
     raw_text = read_text_file(path)
     for i in range(len(raw_text)):

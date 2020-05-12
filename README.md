@@ -18,7 +18,6 @@
   ```bash
   pip install soyspacing
   ```
-  ```
 <br>
 
 ## Installation

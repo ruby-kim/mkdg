@@ -63,6 +63,7 @@ class Tag_dict:
         self.preEomi_dict = dict()  # 선어말어미: EP
         self.suffix_dict = dict()  # 접사: XPN, XSA, XSN, XSV
         self.verb_dict = dict()  # 동사: VV, VX
+        self.wordDict = {}
 
     def judge_tag(self):
         for text in self.content:
@@ -96,6 +97,18 @@ class Tag_dict:
                         self.suffix_dict = tag_cnt(word, self.suffix_dict)
                     elif tagName == "verb":
                         self.verb_dict = tag_cnt(word, self.verb_dict)
+
+    def cnt_origin_word(self):
+        for text in self.content:
+            sent_corrected, tags = self.model.correct(text)
+            words = del_special_char(sent_corrected).split(" ")
+            for word in words:
+                if word not in self.wordDict:
+                    self.wordDict[word] = 0
+                self.wordDict[word] += 1
+
+    def print_len(self):
+        print("text line:", len(self.content))
 
     def print_tag_frequency(self, cnt=30):
         """
@@ -145,16 +158,9 @@ class Tag_dict:
         Args:
             :param: cnt(int)
         """
-        wordList = {}
-        for text in self.content:
-            sent_corrected, tags = self.model.correct(text)
-            words = del_special_char(sent_corrected).split(" ")
-            for word in words:
-                if word not in wordList:
-                    wordList[word] = 0
-                wordList[word] += 1
-        wordList = sorted(wordList.items(), key=lambda x: x[1], reverse=True)
-        print(wordList[:cnt])
+        self.cnt_origin_word()
+        self.wordDict = sorted(self.wordDict.items(), key=lambda x: x[1], reverse=True)
+        print(self.wordDict[:cnt])
 
     def print_dict(self, tagName):
         if tagName == "adjective":
@@ -198,18 +204,23 @@ class Tag_dict:
             result = self.komoran.pos(text)
             print(result)
 
-    def print_compare(self, form):
+    def save_compare(self, form):
         result = ""
         if form is "morph":
             for text in self.content:
                 result += text + str(self.komoran.morphs(text)) + "\n\n"
-        else:       # pos
+        elif form is "pos":
             for text in self.content:
                 result += text + str(self.komoran.pos(text)) + "\n\n"
         save_text_file(filename, result, form)
 
-    def print_len(self):
-        print("text line:", len(self.content))
+    def save_origin_frequency(self):
+        result = ""
+        self.cnt_origin_word()
+        self.wordDict = sorted(self.wordDict.items(), key=lambda x: x[1], reverse=True)
+        for key_value in self.wordDict:
+            result += str(key_value) + "\n"
+        save_text_file(filename, result, "origin")
 
 
 def analyze(contents):
@@ -221,20 +232,21 @@ def analyze(contents):
     Returns:
         :param: word_dict(dict)
     """
-    dict = Tag_dict(contents)       # initial dict class
-    # dict.print_len()              # print context count
-    dict.print_origin_frequency()   # print origin frequency words count (default: 30)
-    # dict.judge_tag()              # get tag list & judge the kind of sentence word's tag
-    # dict.print_morph()            # print morph text
-    # dict.print_pos()              # print pos text
-    # dict.print_tag_frequency()    # print top tag frequency words count (default: 30)
-    # dict.print_dict("noun")       # print selected tag list
-    # dict.print_compare("morph")   # print origin text & morph text
-    # dict.print_compare("pos")     # print origin text & pos text
+    dict = Tag_dict(contents)           # initial dict class
+    # dict.print_len()                  # print context count
+    # dict.print_origin_frequency()     # print origin frequency words count (default: 30)
+    # dict.judge_tag()                  # get tag list & judge the kind of sentence word's tag
+    # dict.print_morph()                # print morph text
+    # dict.print_pos()                  # print pos text
+    # dict.print_tag_frequency()        # print top tag frequency words count (default: 30)
+    # dict.print_dict("noun")           # print selected tag list
+    # dict.save_compare("morph")        # save all of origin text & morph text
+    # dict.save_compare("pos")          # save all of origin text & pos text
+    dict.save_origin_frequency()        # save all of origin frequency words count
 
 
 if __name__ == "__main__":
-    filename = "J 민원 교통_최종본(0416)(1334)_only_speak.txt"
+    filename = "J 민원 교통_최종본(0416)_only_speak.txt"
     path = "./data/" + filename
     raw_text = read_text_file(path)
     analyze(raw_text)
