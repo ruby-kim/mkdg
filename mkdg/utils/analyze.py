@@ -222,12 +222,12 @@ def analyze(contents):
         :param: word_dict(dict)
     """
     dict = Tag_dict(contents)       # initial dict class
-    # dict.print_len()
-    dict.print_origin_frequency()
-    # dict.judge_tag()                # get tag list & judge the kind of sentence word's tag
+    # dict.print_len()              # print context count
+    dict.print_origin_frequency()   # print origin frequency words count (default: 30)
+    # dict.judge_tag()              # get tag list & judge the kind of sentence word's tag
     # dict.print_morph()            # print morph text
     # dict.print_pos()              # print pos text
-    # dict.print_tag_frequency()    # print top tag frequency 30 words (default: 30)
+    # dict.print_tag_frequency()    # print top tag frequency words count (default: 30)
     # dict.print_dict("noun")       # print selected tag list
     # dict.print_compare("morph")   # print origin text & morph text
     # dict.print_compare("pos")     # print origin text & pos text

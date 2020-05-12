@@ -103,3 +103,8 @@ def del_alphabet(text):
     repl = ""
     regexed_text = re.sub(pattern, repl, text)
     return regexed_text
+
+
+if __name__ == "__main__":
+    test_consonant = "아악ㄱㄱㄱ너무ㄱㄱ맛ㅅ있당ㅇ"
+    print(del_consonant(test_consonant))
