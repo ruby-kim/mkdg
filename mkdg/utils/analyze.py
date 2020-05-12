@@ -3,9 +3,11 @@ analyze sentences & top word frequency
 """
 import re
 from konlpy.tag import Komoran
+from soyspacing.countbase import CountSpace
 
 from mkdg.utils.loadfile import read_text_file
 from mkdg.utils.writefile import save_text_file
+from mkdg.utils.preprocess import del_special_char
 
 
 def tag_switch(tag):
@@ -50,6 +52,7 @@ class Tag_dict:
     def __init__(self, content):
         self.content = content
         self.komoran = Komoran(userdic='./data/user_dic.txt')
+        self.model = CountSpace()
         self.adjective_dict = dict()  # 형용사: VA, VCN, VCP
         self.adverb_dict = dict()  # 부사: MAG
         self.conjunction_dict = dict()  # 접속사: MAJ
@@ -61,7 +64,40 @@ class Tag_dict:
         self.suffix_dict = dict()  # 접사: XPN, XSA, XSN, XSV
         self.verb_dict = dict()  # 동사: VV, VX
 
-    def print_frequency(self, cnt=30):
+    def judge_tag(self):
+        for text in self.content:
+            posList = self.komoran.pos(text)
+            for pos in posList:
+                # preprocessing
+                word = re.sub("[ㄱ-ㅎ|ㅏ-ㅣ|.,?!]", repl="", string=str(pos[0]))
+                if word == "":
+                    continue
+
+                # seperate tag & count
+                tagName = tag_switch(pos[1])
+                if tagName != -1:
+                    if tagName == "adjective":
+                        self.adjective_dict = tag_cnt(word, self.adjective_dict)
+                    elif tagName == "adverb":
+                        self.adverb_dict = tag_cnt(word, self.adverb_dict)
+                    elif tagName == "conjunction":
+                        self.conjunction_dict = tag_cnt(word, self.conjunction_dict)
+                    elif tagName == "determiner":
+                        self.determiner_dict = tag_cnt(word, self.determiner_dict)
+                    elif tagName == "eomi":
+                        self.eomi_dict = tag_cnt(word, self.eomi_dict)
+                    elif tagName == "josa":
+                        self.josa_dict = tag_cnt(word, self.josa_dict)
+                    elif tagName == "noun":
+                        self.noun_dict = tag_cnt(word, self.noun_dict)
+                    elif tagName == "preEomi":
+                        self.preEomi_dict = tag_cnt(word, self.preEomi_dict)
+                    elif tagName == "suffix":
+                        self.suffix_dict = tag_cnt(word, self.suffix_dict)
+                    elif tagName == "verb":
+                        self.verb_dict = tag_cnt(word, self.verb_dict)
+
+    def print_tag_frequency(self, cnt=30):
         """
         print dict values frequency (descending)
 
@@ -102,38 +138,23 @@ class Tag_dict:
         print("\n동사(verb):")
         print(self.verb_dict[:cnt])
 
-    def judge_tag(self):
-        for text in self.content:
-            posList = self.komoran.pos(text)
-            for pos in posList:
-                # preprocessing
-                word = re.sub("[ㄱ-ㅎ|ㅏ-ㅣ|.,?!]", repl="", string=str(pos[0]))
-                if word == "":
-                    continue
+    def print_origin_frequency(self, cnt=30):
+        """
+        print origin values frequency (descending)
 
-                # seperate tag & count
-                tagName = tag_switch(pos[1])
-                if tagName != -1:
-                    if tagName == "adjective":
-                        self.adjective_dict = tag_cnt(word, self.adjective_dict)
-                    elif tagName == "adverb":
-                        self.adverb_dict = tag_cnt(word, self.adverb_dict)
-                    elif tagName == "conjunction":
-                        self.conjunction_dict = tag_cnt(word, self.conjunction_dict)
-                    elif tagName == "determiner":
-                        self.determiner_dict = tag_cnt(word, self.determiner_dict)
-                    elif tagName == "eomi":
-                        self.eomi_dict = tag_cnt(word, self.eomi_dict)
-                    elif tagName == "josa":
-                        self.josa_dict = tag_cnt(word, self.josa_dict)
-                    elif tagName == "noun":
-                        self.noun_dict = tag_cnt(word, self.noun_dict)
-                    elif tagName == "preEomi":
-                        self.preEomi_dict = tag_cnt(word, self.preEomi_dict)
-                    elif tagName == "suffix":
-                        self.suffix_dict = tag_cnt(word, self.suffix_dict)
-                    elif tagName == "verb":
-                        self.verb_dict = tag_cnt(word, self.verb_dict)
+        Args:
+            :param: cnt(int)
+        """
+        wordList = {}
+        for text in self.content:
+            sent_corrected, tags = self.model.correct(text)
+            words = del_special_char(sent_corrected).split(" ")
+            for word in words:
+                if word not in wordList:
+                    wordList[word] = 0
+                wordList[word] += 1
+        wordList = sorted(wordList.items(), key=lambda x: x[1], reverse=True)
+        print(wordList[:cnt])
 
     def print_dict(self, tagName):
         if tagName == "adjective":
@@ -187,6 +208,9 @@ class Tag_dict:
                 result += text + str(self.komoran.pos(text)) + "\n\n"
         save_text_file(filename, result, form)
 
+    def print_len(self):
+        print("text line:", len(self.content))
+
 
 def analyze(contents):
     """
@@ -198,17 +222,19 @@ def analyze(contents):
         :param: word_dict(dict)
     """
     dict = Tag_dict(contents)       # initial dict class
-    dict.judge_tag()                # get tag list & judge the kind of sentence word's tag
+    # dict.print_len()
+    dict.print_origin_frequency()
+    # dict.judge_tag()                # get tag list & judge the kind of sentence word's tag
     # dict.print_morph()            # print morph text
     # dict.print_pos()              # print pos text
-    dict.print_frequency()          # print top frequency 30 words (default: 30)
+    # dict.print_tag_frequency()    # print top tag frequency 30 words (default: 30)
     # dict.print_dict("noun")       # print selected tag list
     # dict.print_compare("morph")   # print origin text & morph text
-    # dict.print_compare("pos")        # print origin text & pos text
+    # dict.print_compare("pos")     # print origin text & pos text
 
 
 if __name__ == "__main__":
-    filename = "F 카페(7,859)_only_speak.txt"
+    filename = "J 민원 교통_최종본(0416)(1334)_only_speak.txt"
     path = "./data/" + filename
     raw_text = read_text_file(path)
     analyze(raw_text)
