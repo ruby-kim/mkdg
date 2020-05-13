@@ -12,7 +12,7 @@ from mkdg.misspell.verb import load_verb
 from mkdg.utils.loadfile import read_csv_file
 
 
-def misspell_single_data(sheet_name):
+def misspell_single_data(sheet_name=None):
     """
     Get mis-spell dictionary, key: origin / value: change word list
         Args:
@@ -70,6 +70,7 @@ def misspell_all_data():
 
 
 if __name__ == "__main__":
+    """ data/misspell_stem.xlsx """
     adjective, adjective_alt, \
     adverb, adverb_alt, \
     conjunction, conjunction_alt, \
@@ -80,3 +81,7 @@ if __name__ == "__main__":
     preEomi, preEomi_alt, \
     suffix, suffix_alt, \
     verb, verb_alt = misspell_all_data()
+
+    """ data/misspell_origin.xlsx """
+    # 변수때문에 여기서 제대로 실행하기 애매해서 예제코드 패스
+    # ./misspell.py에서 예제코드 참고

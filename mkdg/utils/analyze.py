@@ -119,6 +119,8 @@ class Tag_dict:
         Returns:
             :param: tagDict(1st ~ until cnt-th) (dict)
         """
+        self.judge_tag()
+
         self.adjective_dict = sorted(self.adjective_dict.items(), key=lambda x: x[1], reverse=True)
         self.adverb_dict = sorted(self.adverb_dict.items(), key=lambda x: x[1], reverse=True)
         self.conjunction_dict = sorted(self.conjunction_dict.items(), key=lambda x: x[1], reverse=True)
@@ -163,6 +165,8 @@ class Tag_dict:
         print(self.wordDict[:cnt])
 
     def print_dict(self, tagName):
+        self.judge_tag()
+
         if tagName == "adjective":
             for tag in self.adjective_dict.keys():
                 print(tag)
@@ -235,13 +239,12 @@ def analyze(contents):
     dict = Tag_dict(contents)           # initial dict class
     # dict.print_len()                  # print context count
     # dict.print_origin_frequency()     # print origin frequency words count (default: 30)
-    # dict.judge_tag()                  # get tag list & judge the kind of sentence word's tag
     # dict.print_morph()                # print morph text
     # dict.print_pos()                  # print pos text
     # dict.print_tag_frequency()        # print top tag frequency words count (default: 30)
     # dict.print_dict("noun")           # print selected tag list
-    dict.save_compare("morph")        # save all of origin text & morph text
-    dict.save_compare("pos")          # save all of origin text & pos text
+    dict.save_compare("morph")          # save all of origin text & morph text
+    dict.save_compare("pos")            # save all of origin text & pos text
     dict.save_origin_frequency()        # save all of origin frequency words count
 
 
