@@ -5,8 +5,8 @@ import re
 from konlpy.tag import Komoran
 from soyspacing.countbase import CountSpace
 
-from mkdg.utils.loadfile import read_text_file
-from mkdg.utils.writefile import save_text_file
+from mkdg.utils.loadfile import read_text_file, read_xlsx_file
+from mkdg.utils.writefile import save_text_file, rewrite_xlxs_file
 from mkdg.utils.preprocess import del_special_char
 
 
@@ -222,9 +222,35 @@ class Tag_dict:
         result = ""
         self.cnt_origin_word()
         self.wordDict = sorted(self.wordDict.items(), key=lambda x: x[1], reverse=True)
+
+        """ save result as .txt """
         for key_value in self.wordDict:
             result += str(key_value) + "\n"
         save_text_file(filename, result, "origin")
+
+        """ save new word dict to misspell_origin.xlsx """
+        # load existence values & make as a dictionary
+        past_data = read_xlsx_file()
+        past_data_dict = dict()
+        for i in range(past_data.shape[0]):
+            valList = list()
+            for j in range(past_data.shape[1]):
+                if type(past_data.loc[i][j]) is str:
+                    valList.append(past_data.loc[i][j])
+                else:
+                    break
+            past_data_dict[past_data.loc[i][0]] = valList
+        past_data_keyList = list(past_data_dict.keys())     # for delete overlap word
+
+        # make current values as a list
+        current_data_list = list(dict(self.wordDict).keys())
+
+        # make new dict list (delete overlap word)
+        newDictList = list(set(past_data_keyList + current_data_list))
+
+        # re-write contents (data/misspell_origin.xlsx)
+        type(newDictList)
+        rewrite_xlxs_file(newDictList, len(newDictList))
 
 
 def analyze(contents):

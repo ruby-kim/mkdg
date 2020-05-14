@@ -1,7 +1,7 @@
 """
 Implement write misspelled files: csv, txt
 """
-import csv
+import pandas as pd
 import os
 
 
@@ -10,16 +10,16 @@ def check_tgt_folder(targetPath):
         os.mkdir(targetPath)
 
 
-def save_csv_file(filename, texts):
-    targetPath = os.getcwd() + "/data/tgt/"
+def rewrite_xlxs_file(texts, len):
+    targetPath = os.getcwd() + "/data/"
     check_tgt_folder(targetPath)
-    filename = (targetPath + filename).replace(".txt", "")
+    print(targetPath)
+    filename = targetPath + "misspell_origin.xlsx"
+    df = pd.DataFrame(texts)
+    print(texts)
 
-    with open(filename, 'r') as f:
-        writer = csv.writer(f)
-        # default
-        for text in texts:
-            writer.writerow(text)
+    #print(df)
+    #df.to_csv(filename, header=False, index=False)
 
 
 def save_text_file(filename, texts, func=None):

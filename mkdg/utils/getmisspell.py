@@ -9,7 +9,7 @@ from mkdg.misspell.preEomi import load_preEomi
 from mkdg.misspell.suffix import load_suffix
 from mkdg.misspell.verb import load_verb
 
-from mkdg.utils.loadfile import read_csv_file
+from mkdg.utils.loadfile import read_xlsx_file
 
 
 def misspell_single_data(sheet_name=None):
@@ -18,9 +18,9 @@ def misspell_single_data(sheet_name=None):
         Args:
             :param: filename(str): the path of file
         Returns:
-            :param: misspell(dict): mis-spell dictionary (from .csv file)
+            :param: misspell(dict): mis-spell dictionary (from .xlsx file)
     """
-    data = read_csv_file(sheet_name)
+    data = read_xlsx_file(sheet_name)
 
     misspell = dict()   # mis-spell dictionary
 

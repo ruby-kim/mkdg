@@ -4,7 +4,7 @@ Implement load file: csv, text
 import pandas as pd
 
 
-def read_csv_file(sheet_name=None):
+def read_xlsx_file(sheet_name=None):
     if sheet_name is None:
         data = pd.read_excel("data/misspell_origin.xlsx")
     else:
@@ -26,6 +26,6 @@ if __name__ == "__main__":
     # print(raw_text)
 
     """ csv file """
-    raw_text = read_csv_file()                  # misspell_origin.xlsx
+    raw_text = read_xlsx_file()                  # misspell_origin.xlsx
     # raw_text = read_csv_file("adjective")     # misspell_stem.xlsx
     print(raw_text)
