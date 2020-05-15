@@ -2,6 +2,7 @@
 Implement write misspelled files: csv, txt
 """
 import pandas as pd
+import numpy as np
 import os
 
 
@@ -10,16 +11,44 @@ def check_tgt_folder(targetPath):
         os.mkdir(targetPath)
 
 
-def rewrite_xlxs_file(texts, len):
+def modify_dataframe(pastDataDict, newDictList):
+    """
+    Make new dataframe: connect [pastDataDict's value *-*-*-*-* newDictList's key
+
+    Args:
+        pastDataDict: origin xlsx data
+        newDictList: want to add word list to xlsx file
+    Returns:
+        new dataframe which is conneted pastDataDict's value and newDictList's key
+    """
+    # df = pd.DataFrame.from_dict(pastDataDict)
+
+    # find the length of all dictionary value's list
+    max_len = 0
+    for valList in pastDataDict.values():
+        max_len = max(max_len, len(valList))
+
+    # Resize all according to the determined max length
+    for key, value in pastDataDict.items():
+        if max_len != len(value):
+            pastDataDict[key] = value.extend("None" * (max_len - len(value)))
+        print(pastDataDict[key])
+
+    # make past data dictionary to dataframe
+    df = pd.DataFrame.from_dict(pastDataDict).T
+
+    # change None value
+    print(df.head())
+    return df
+
+
+def rewrite_xlxs_file(pastDataDict, newDictList):
     targetPath = os.getcwd() + "/data/"
     check_tgt_folder(targetPath)
-    print(targetPath)
     filename = targetPath + "misspell_origin.xlsx"
-    df = pd.DataFrame(texts)
-    print(texts)
-
-    #print(df)
-    #df.to_csv(filename, header=False, index=False)
+    df = modify_dataframe(pastDataDict, newDictList)
+    df.to_csv(filename, mode="a", header=False)
+    print("===== Finish: save new word list to data/misspell_origin.xlsx =====")
 
 
 def save_text_file(filename, texts, func=None):
