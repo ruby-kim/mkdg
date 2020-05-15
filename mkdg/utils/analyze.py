@@ -230,27 +230,34 @@ class Tag_dict:
 
         """ save new word dict to misspell_origin.xlsx """
         # load existence values & make as a dictionary
-        past_data = read_xlsx_file()
-        past_data_dict = dict()
-        for i in range(past_data.shape[0]):
+        pastData = read_xlsx_file()
+        pastDataDict = dict()
+        max_len = 0
+        print(pastData.head())
+        for i in range(pastData.shape[0]):
+            cur_len = 0
             valList = list()
-            for j in range(past_data.shape[1]):
-                if type(past_data.loc[i][j]) is str:
-                    valList.append(past_data.loc[i][j])
+            for j in range(1, pastData.shape[1]):
+                if type(pastData.loc[i][j]) is str:
+                    max_len += 1
+                    valList.append(pastData.loc[i][j])
                 else:
+                    if cur_len > max_len:
+                        max_len = cur_len
                     break
-            past_data_dict[past_data.loc[i][0]] = valList
-        past_data_keyList = list(past_data_dict.keys())     # for delete overlap word
+            pastDataDict[pastData.loc[i][0]] = valList
+        pastData_keyList = list(pastDataDict.keys())     # for delete overlap word
 
         # make current values as a list
         current_data_list = list(dict(self.wordDict).keys())
+        print(pastDataDict)
 
         # make new dict list (delete overlap word)
-        newDictList = list(set(past_data_keyList + current_data_list))
+        newDictList = list(set(pastData_keyList + current_data_list))
+        newDictList.remove("")  # delete empty element
 
         # re-write contents (data/misspell_origin.xlsx)
-        type(newDictList)
-        rewrite_xlxs_file(newDictList, len(newDictList))
+        rewrite_xlxs_file(pastDataDict, newDictList, [pastData.shape[0]+len(dict(self.wordDict).keys()), max_len])
 
 
 def analyze(contents):
