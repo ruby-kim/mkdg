@@ -232,32 +232,25 @@ class Tag_dict:
         # load existence values & make as a dictionary
         pastData = read_xlsx_file()
         pastDataDict = dict()
-        max_len = 0
-        print(pastData.head())
         for i in range(pastData.shape[0]):
-            cur_len = 0
             valList = list()
             for j in range(1, pastData.shape[1]):
                 if type(pastData.loc[i][j]) is str:
-                    max_len += 1
                     valList.append(pastData.loc[i][j])
                 else:
-                    if cur_len > max_len:
-                        max_len = cur_len
                     break
             pastDataDict[pastData.loc[i][0]] = valList
         pastData_keyList = list(pastDataDict.keys())     # for delete overlap word
 
         # make current values as a list
         current_data_list = list(dict(self.wordDict).keys())
-        print(pastDataDict)
 
         # make new dict list (delete overlap word)
         newDictList = list(set(pastData_keyList + current_data_list))
         newDictList.remove("")  # delete empty element
 
         # re-write contents (data/misspell_origin.xlsx)
-        rewrite_xlxs_file(pastDataDict, newDictList, [pastData.shape[0]+len(dict(self.wordDict).keys()), max_len])
+        rewrite_xlxs_file(pastDataDict, newDictList)
 
 
 def analyze(contents):

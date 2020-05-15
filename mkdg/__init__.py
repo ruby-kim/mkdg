@@ -11,6 +11,7 @@ __install_requires__ = [
     "pandas",
     "xlrd",
     "soyspacing",
+    "numpy",
 ]
 __license__ = 'MIT'
 
