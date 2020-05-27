@@ -4,6 +4,7 @@ analyze sentences & top word frequency
 import re
 from konlpy.tag import Komoran
 from soyspacing.countbase import CountSpace
+from korNum.chgFormat import kor2num
 
 from mkdg.utils.loadfile import read_text_file, read_xlsx_file
 from mkdg.utils.writefile import save_text_file, rewrite_xlxs_file
@@ -63,10 +64,11 @@ class Tag_dict:
         self.preEomi_dict = dict()  # 선어말어미: EP
         self.suffix_dict = dict()  # 접사: XPN, XSA, XSN, XSV
         self.verb_dict = dict()  # 동사: VV, VX
-        self.wordDict = {}
+        self.wordDict = dict()
 
     def judge_tag(self):
         for text in self.content:
+            text = kor2num(text)
             posList = self.komoran.pos(text)
             for pos in posList:
                 # preprocessing
@@ -99,11 +101,13 @@ class Tag_dict:
                         self.verb_dict = tag_cnt(word, self.verb_dict)
 
     def cnt_origin_word(self):
+        if type(self.wordDict) is list:
+            return
         for text in self.content:
             sent_corrected, tags = self.model.correct(text)
             words = del_special_char(sent_corrected).split(" ")
             for word in words:
-                if word not in self.wordDict:
+                if word not in self.wordDict.keys():
                     self.wordDict[word] = 0
                 self.wordDict[word] += 1
 
@@ -216,12 +220,14 @@ class Tag_dict:
         elif form is "pos":
             for text in self.content:
                 result += text + str(self.komoran.pos(text)) + "\n\n"
+
         save_text_file(filename, result, form)
 
     def save_origin_frequency(self):
         result = ""
         self.cnt_origin_word()
-        self.wordDict = sorted(self.wordDict.items(), key=lambda x: x[1], reverse=True)
+        if type(self.wordDict) is dict:
+            self.wordDict = sorted(self.wordDict.items(), key=lambda x: x[1], reverse=True)
 
         """ save result as .txt """
         for key_value in self.wordDict:
@@ -240,7 +246,7 @@ class Tag_dict:
                 else:
                     break
             pastDataDict[pastData.loc[i][0]] = valList
-        pastData_keyList = list(pastDataDict.keys())     # for delete overlap word
+        pastData_keyList = list(pastDataDict.keys())  # for delete overlap word
 
         # make current values as a list
         current_data_list = list(dict(self.wordDict).keys())
@@ -250,7 +256,50 @@ class Tag_dict:
         newDictList.remove("")  # delete empty element
 
         # re-write contents (data/misspell_origin.xlsx)
-        rewrite_xlxs_file(pastDataDict, newDictList)
+        rewrite_xlxs_file(pastDataDict, newDictList, "misspell_origin.xlsx")
+        print("===== Finish: save new word list to data/misspell_origin.xlsx =====")
+
+    def save_noun_standard(self):
+        # result = list()
+        self.cnt_origin_word()
+        if type(self.wordDict) is dict:
+            self.wordDict = sorted(self.wordDict.items(), key=lambda x: x[1], reverse=True)
+
+        # for key_value in self.wordDict:
+        #     for noun in self.noun_dict.keys():
+        #         if noun in key_value[0]:
+        #             if noun not in result:
+        #                 result.append(noun + "\n")
+        #             if noun in result:
+        #                 tmp = key_value[0].replace(noun, "")
+        #                 if tmp not in result:
+        #                     result.append(tmp + "\n")
+        # save_text_file(filename, result, "noun_standard")
+
+        """ save new word dict to misspell_noun_standard.xlsx """
+        # load existence values & make as a dictionary
+        pastData = read_xlsx_file("noun_standard")
+        pastDataDict = dict()
+        for i in range(pastData.shape[0]):
+            valList = list()
+            for j in range(1, pastData.shape[1]):
+                if type(pastData.loc[i][j]) is str:
+                    valList.append(pastData.loc[i][j])
+                else:
+                    break
+            pastDataDict[pastData.loc[i][0]] = valList
+        pastData_keyList = list(pastDataDict.keys())  # for delete overlap word
+
+        # make current values as a list
+        current_data_list = list(dict(self.wordDict).keys())
+
+        # make new dict list (delete overlap word)
+        newDictList = list(set(pastData_keyList + current_data_list))
+        newDictList.remove("")  # delete empty element
+
+        # re-write contents (data/misspell_origin.xlsx)
+        rewrite_xlxs_file(pastDataDict, newDictList, "misspell_noun_standard.xlsx")
+        print("===== Finish: save new word list to data/misspell_noun_standard.xlsx =====")
 
 
 def analyze(contents):
@@ -271,6 +320,7 @@ def analyze(contents):
     # dict.print_dict("noun")           # print selected tag list
     dict.save_compare("morph")          # save all of origin text & morph text
     dict.save_compare("pos")            # save all of origin text & pos text
+    dict.save_noun_standard()           # save all of origin noun & etc words
     dict.save_origin_frequency()        # save all of origin frequency words count
 
 

@@ -119,6 +119,7 @@ dmypy.json
 # ====================================
 ~$misspell_stem.xlsx
 ~$misspell_origin.xlsx
+~$misspell_noun_standard.xlsx
 
 # Etc
 .idea/

@@ -7,6 +7,8 @@ import pandas as pd
 def read_xlsx_file(sheet_name=None):
     if sheet_name is None:
         data = pd.read_excel("data/misspell_origin.xlsx")
+    elif sheet_name is "noun_standard":
+        data = pd.read_excel("data/misspell_noun_standard.xlsx")
     else:
         data = pd.read_excel("data/misspell_stem.xlsx", sheet_name=sheet_name)
     return data
