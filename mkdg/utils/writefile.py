@@ -80,8 +80,6 @@ def save_text_file(filename, texts, func=None):
             file = open(filename + "_pos.txt", "w", encoding="utf-8")
         elif func is "origin":
             file = open(filename + "_origin.txt", "w", encoding="utf-8")
-        elif func is "noun_standard":
-            file = open(filename + "_noun_standard.txt", "w", encoding="utf-8")
 
     for text in texts:
         file.write(text)
