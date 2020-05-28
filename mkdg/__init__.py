@@ -12,6 +12,7 @@ __install_requires__ = [
     "xlrd",
     "soyspacing",
     "numpy",
+    "korNum",
 ]
 __license__ = 'MIT'
 
