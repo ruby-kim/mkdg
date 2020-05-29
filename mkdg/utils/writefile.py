@@ -65,11 +65,14 @@ def rewrite_xlxs_file(pastDataDict, newDictList, filename):
 
 
 def save_text_file(filename, texts, func=None):
+    file = ""
     if func is None:
         targetPath = os.getcwd() + "/data/tgt/"
         check_tgt_folder(targetPath)
         filename = (targetPath + filename).replace(".txt", "")
         file = open(filename + "_change.txt", "w", encoding="utf-8")
+    elif func is "user_dic":
+        file = open(filename, "w", encoding="utf-8")
     else:
         targetPath = os.getcwd() + "/data/analyze/"
         check_tgt_folder(targetPath)
