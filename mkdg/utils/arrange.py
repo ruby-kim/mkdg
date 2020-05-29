@@ -14,7 +14,7 @@ def arrangement_text():
         for j in data[i]:
             if j not in unique_value:
                 unique_value += j
-
+        print(unique_value)
         """ make dictionary key, value """
         flag = False
         if " " in unique_value:
