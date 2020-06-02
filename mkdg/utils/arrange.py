@@ -41,6 +41,12 @@ def arrangement_text():
     return result
 
 
+def check_null(data):
+    for i in range(len(data)):
+        print(i, data[i], end="")
+
+
 if __name__ == "__main__":
     result = arrangement_text()
+    # check_null(result)
     save_text_file(os.getcwd() + "/data/user_dic.txt", result, "user_dic")
