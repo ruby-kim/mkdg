@@ -13,6 +13,7 @@ __install_requires__ = [
     "soyspacing",
     "numpy",
     "korNum",
+    "py-hanspell"
 ]
 __license__ = 'MIT'
 
