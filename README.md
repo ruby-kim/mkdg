@@ -2,28 +2,12 @@
 맞춤법이 틀린 한국어 데이터를 만드는 코드
 <br><br>
 
-## Requirements
-* konlpy
-  ```bash
-  pip install konlpy
-  ```
-* pandas
-  ```bash
-  pip install pandas
-  ```
-* xlrd
-  ```bash
-  pip install xlrd
-* soyspacing
-  ```bash
-  pip install soyspacing
-  ```
-<br>
 
-## Installation
+## Installation (Requirements & package)
 ```bash
 git clone https://github.com/study-ai-data/mkdg
 cd mkdg
+pip install -r requirements.txt
 python setup.py install
 ```
 <br>
