@@ -2,12 +2,22 @@
 맞춤법이 틀린 한국어 데이터를 만드는 코드
 <br><br>
 
+## Requirements
+원래 ```requirements.txt```로 한번에 설치하게 하려고 했는데, 패키지 중 ```py-hanspell```자체 내에서 설치 오류가 발생하여 ```py-hanspell```만 따로 설치 방법을 적습니다.
+<br>이후에 업데이트 되어서 코드가 정상적으로 잘 작동하면 ```requirements.txt```에 추가하도록 하겠습니다.
+* ```py-hanspell``` 설치법
+  ```bash
+  git clone https://github.com/study-ai-data/py-hanspell
+  cd py-hanspell
+  python setup.py install
+  ```
+* ```py-hanspell```을 제외한 나머지 패키지 설치:
+  ```bash
+  pip install -r requirements.txt
+  ```
 
-## Installation (Requirements & package)
+## Installation
 ```bash
-git clone https://github.com/study-ai-data/mkdg
-cd mkdg
-pip install -r requirements.txt     # install requirements
 python setup.py install             # install package
 ```
 <br>

@@ -13,7 +13,6 @@ __install_requires__ = [
     "soyspacing",
     "numpy",
     "korNum",
-    "pypapago",
 ]
 __license__ = 'MIT'
 
