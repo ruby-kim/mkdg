@@ -44,3 +44,4 @@ webencodings>=0.5.1
 wincertstore>=0.2
 xlrd>=1.2.0
 zipp>=3.1.0
+pypapago>=0.1.1.1
