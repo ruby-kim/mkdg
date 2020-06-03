@@ -7,8 +7,8 @@
 ```bash
 git clone https://github.com/study-ai-data/mkdg
 cd mkdg
-pip install -r requirements.txt
-python setup.py install
+pip install -r requirements.txt     # install requirements
+python setup.py install             # install package
 ```
 <br>
 
