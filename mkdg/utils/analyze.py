@@ -296,15 +296,15 @@ class Tag_dict:
 
         # make current values as a list
         current_data_list = list()
+        for noun in self.noun_dict.keys():
+            current_data_list.append(noun)
         for key_value in self.wordDict:
-            for noun in self.noun_dict.keys():
+            tmp = key_value[0]
+            for noun in current_data_list:
                 if noun in key_value[0]:
-                    if noun not in current_data_list:
-                        current_data_list.append(noun)
-                    if noun in current_data_list:
-                        tmp = key_value[0].replace(noun, "")
-                        if tmp not in current_data_list:
-                            current_data_list.append(tmp)
+                    tmp = tmp.replace(noun, "")
+            if tmp != "":
+                current_data_list.append(tmp)
 
         # make new dict list (delete overlap word)
         newDictList = list(set(pastData_keyList + current_data_list))
@@ -326,7 +326,6 @@ def analyze(contents):
         :param: word_dict(dict)
     """
     dict = Tag_dict(contents)             # initial dict class
-    dict.judge_tag()
     # dict.print_len()                    # print context count
     # dict.print_origin_frequency()       # print origin frequency words count (default: 30)
     # dict.print_morph()                  # print morph text
@@ -335,7 +334,7 @@ def analyze(contents):
     # dict.print_dict("noun")             # print selected tag list
     # dict.save_compare("morph")          # save all of origin text & morph text
     # dict.save_compare("pos")            # save all of origin text & pos text
-    # dict.save_noun_standard()             # save all of origin noun & etc words
+    dict.save_noun_standard()             # save all of origin noun & etc words
     # dict.save_origin_frequency()        # save all of origin frequency words count
     print(dict.noun_dict)
 
