@@ -340,7 +340,7 @@ def analyze(contents):
 
 
 if __name__ == "__main__":
-    filename = "J 민원 교통_최종본(0416)_only_speak_naver.txt"
+    filename = "J 민원 차량등록_최종본(0429)_only_speak_naver.txt"
     path = "./data/" + filename
     raw_text = read_text_file(path)
     analyze(raw_text)
