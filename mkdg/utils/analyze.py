@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 """
 analyze sentences & top word frequency
 """
 import re
+import os
 from konlpy.tag import Komoran
 from soyspacing.countbase import CountSpace
-from korNum.chgFormat import kor2num
-from
 
 from mkdg.utils.loadfile import read_text_file, read_xlsx_file
 from mkdg.utils.writefile import save_text_file, rewrite_xlxs_file
@@ -21,18 +21,28 @@ def tag_switch(tag):
     Returns:
         :param: tag name(str)
     """
-    return {
-        "VA" or "VCN" or "VCP": "adjective",    # 형용사
-        "MAG": "adverb",    # 부사
-        "MAJ": "conjunction",   # 접속사
-        "MM": "determiner", # 관형사
-        "EC" or "EF" or "ETM" or "ETN": "eomi", # 어미
-        "JC" or "JKC" or "JKG" or "JKV" or "JKB" or "JKO" or "JKQ" or "JKS" or "JS": "josa",    # 조사
-        "NNG" or "NNB" or "NNP" or "NP" or "NR": "noun",    # 명사
-        "EP": "preEomi",    # 선어말어미
-        "XPN" or "XSA" or "XSN" or "XSV": "suffix", # 접사
-        "VV" or "VX": "verb"    # 동사
-    }.get(tag, -1)
+    if (tag == "NNP") or (tag == "NNB") or (tag == "NNG") or (tag == "NP") or (tag == "NR"):    # 명사
+        return "noun"
+    elif (tag == "VA") or (tag == "VCN") or (tag == "VCP"):   # 형용사
+        return "adjective"
+    elif (tag == "EC") or (tag == "EF") or (tag == "ETM") or (tag == "ETN"):   # 어미
+        return "eomi"
+    elif (tag == "JC") or (tag == "JKC") or (tag == "JKG") or (tag == "JKV") or (tag == "JKB") or (tag == "JKO") or (tag == "JKQ") or (tag == "JKS") or (tag == "JS"):  # 조사
+        return "josa"
+    elif (tag == "XPN") or (tag == "XSA") or (tag == "XSN") or (tag == "XSV"):     # 접사
+        return "suffix"
+    elif (tag == "VV") or (tag == "VX"):     # 동사
+        return "verb"
+    elif tag == "MAG":  # 부사
+        return "adverb"
+    elif tag == "MAJ":  # 접속사
+        return "conjunction"
+    elif tag == "MM":   # 관형사
+        return "determiner"
+    elif tag == "EP":   # 선어말어미
+        return "preEomi"
+    else:
+        return -1
 
 
 def tag_cnt(word, tag_dict):
@@ -53,7 +63,7 @@ def tag_cnt(word, tag_dict):
 class Tag_dict:
     def __init__(self, content):
         self.content = content
-        self.komoran = Komoran(userdic='./data/user_dic.txt')
+        self.komoran = Komoran(userdic=os.getcwd()+'/user_dic.txt')
         self.model = CountSpace()
         self.adjective_dict = dict()  # 형용사: VA, VCN, VCP
         self.adverb_dict = dict()  # 부사: MAG
@@ -113,6 +123,10 @@ class Tag_dict:
 
     def print_len(self):
         print("text line:", len(self.content))
+
+    def print_noun_list(self):
+        self.judge_tag()
+        print(self.noun_dict)
 
     def print_tag_frequency(self, cnt=30):
         """
@@ -311,21 +325,23 @@ def analyze(contents):
     Returns:
         :param: word_dict(dict)
     """
-    dict = Tag_dict(contents)           # initial dict class
-    # dict.print_len()                  # print context count
-    # dict.print_origin_frequency()     # print origin frequency words count (default: 30)
-    # dict.print_morph()                # print morph text
-    # dict.print_pos()                  # print pos text
-    # dict.print_tag_frequency()        # print top tag frequency words count (default: 30)
-    # dict.print_dict("noun")           # print selected tag list
-    # dict.save_compare("morph")        # save all of origin text & morph text
-    # dict.save_compare("pos")          # save all of origin text & pos text
-    dict.save_noun_standard()           # save all of origin noun & etc words
-    # dict.save_origin_frequency()      # save all of origin frequency words count
+    dict = Tag_dict(contents)             # initial dict class
+    dict.judge_tag()
+    # dict.print_len()                    # print context count
+    # dict.print_origin_frequency()       # print origin frequency words count (default: 30)
+    # dict.print_morph()                  # print morph text
+    # dict.print_pos()                    # print pos text
+    # dict.print_tag_frequency()          # print top tag frequency words count (default: 30)
+    # dict.print_dict("noun")             # print selected tag list
+    # dict.save_compare("morph")          # save all of origin text & morph text
+    # dict.save_compare("pos")            # save all of origin text & pos text
+    # dict.save_noun_standard()             # save all of origin noun & etc words
+    # dict.save_origin_frequency()        # save all of origin frequency words count
+    print(dict.noun_dict)
 
 
 if __name__ == "__main__":
-    filename = "J 민원 교통_최종본(0416)_only_speak.txt"
+    filename = "J 민원 교통_최종본(0416)_only_speak_naver.txt"
     path = "./data/" + filename
     raw_text = read_text_file(path)
     analyze(raw_text)

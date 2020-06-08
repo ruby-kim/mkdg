@@ -13,7 +13,7 @@ def check_tgt_folder(targetPath):
 
 def modify_dataframe(pastDataDict, newDictList):
     """
-    Make new dataframe: connect [pastDataDict's value *-*-*-*-* newDictList's key]
+    Make new dataframe: connect [pastDataDict's value -*-*-*- newDictList's key]
 
     Args:
         pastDataDict: origin xlsx data
