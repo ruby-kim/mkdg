@@ -33,22 +33,37 @@ def arrange_xlsx():
     print(data)
 
 
-def check_text_null():
+def check_text_detail():
     data = read_text_file("user_dic.txt")
     for text in data:
         text = text.replace("\n", "")
         if '\t' in text:
             text = text.replace('\t', '<tab>')
+        elif ' ' in text:
+            text = text.replace(' ', '<space>')
         print(text)
+
+
+def check_text_null():
+    data = read_text_file("user_dic.txt")
+    for text in data:
+        if not text:
+            break
+        else:
+            text = text.replace("\n", "")
+            print(text)
 
 
 if __name__ == "__main__":
     """ check null text """
-    # check_text_null()
+    check_text_null()
+
+    """ check detail text value """
+    # check_text_detail()
 
     """ arrange user_dict.txt & save result """
-    result = arrangement_text()
-    save_text_file(os.getcwd() + "/user_dic.txt", result, "user_dic")
+    #result = arrangement_text()
+    #save_text_file(os.getcwd() + "/user_dic.txt", result, "user_dic")
 
     """ arrange xlsx & save result """
     # arrange_xlsx()
