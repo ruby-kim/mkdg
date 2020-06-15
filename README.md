@@ -4,7 +4,8 @@
 
 ## Requirements
 원래 ```requirements.txt```로 한번에 설치하게 하려고 했는데, 패키지 중 ```py-hanspell```자체 내에서 설치 오류가 발생하여 ```py-hanspell```만 따로 설치 방법을 적습니다.
-<br>이후에 업데이트 되어서 코드가 정상적으로 잘 작동하면 ```requirements.txt```에 추가하도록 하겠습니다.
+<br>이후에 업데이트 되어서 코드가 정상적으로 잘 작동하면 ```requirements.txt```에 추가하도록 하겠습니다.<br>
+(참고) 200615: py-hanspell이 곧 업데이트 예정 중이라고 함. 입데이트가 완료될 시 requirements.txt에 삽입할 예정임
 * ```py-hanspell``` 설치법
   ```bash
   git clone https://github.com/study-ai-data/py-hanspell
