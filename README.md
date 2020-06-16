@@ -5,7 +5,6 @@
 ## Requirements
 원래 ```requirements.txt```로 한번에 설치하게 하려고 했는데, 패키지 중 ```py-hanspell```자체 내에서 설치 오류가 발생하여 ```py-hanspell```만 따로 설치 방법을 적습니다.
 <br>이후에 업데이트 되어서 코드가 정상적으로 잘 작동하면 ```requirements.txt```에 추가하도록 하겠습니다.<br>
-(참고) 200615: py-hanspell이 곧 업데이트 예정 중이라고 함. 입데이트가 완료될 시 requirements.txt에 삽입할 예정임
 * ```py-hanspell``` 설치법
   ```bash
   git clone https://github.com/study-ai-data/py-hanspell
@@ -24,8 +23,8 @@ python setup.py install             # install package
 <br>
 
 ## Getting Started
-1. 원본 파일을 ```./data``` 폴더에 넣어주세요. (없을 시 폴더 생성)
-2. ```./misspell.py```에서 53번 째 줄의 ```filename = "A 음식점(15,726)_only_speak.txt"```을 원하는 파일 이름으로 변경해주세요.
+1. 원본 파일을 ```./data``` 폴더에 넣어주세요.
+2. ```./misspell.py```에서 53번 째 줄의 ```filename = "..."```을 원하는 파일 이름으로 변경해주세요.
 3. 코드를 실행 시 문법오류가 있는 데이터가 ```./data/tgt/``` 폴더에 .txt 형태로 저장됩니다.
    ```bash
    python misspell.py

@@ -1,5 +1,5 @@
 # Contributor Guide
-임의로 작성. 의논이 필요함<br>
+임의로 작성<br>
 last update: 2020-04-22
 <br>
 
@@ -39,6 +39,7 @@ python setup.py install
 이후에 실행이 안될 시 python path에 해당 경로 추가
 * running
 ```bash
-python misspell.py --filename [filename1] [filename2]
+python misspell.py # --filename [filename1] [filename2]
 ```
-filename: 원하는 파일 이름. 개수 제한은 없지만, 1개 이상은 입력 필수
+filename: 원하는 파일 이름. 개수 제한은 없지만, 1개 이상은 입력 필수.<br>
+현재 파일이름 입력 시 실행되는 기능은 지원하지 않음
